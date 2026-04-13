@@ -7,145 +7,534 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap');
-    :root { --gold: #d4af77; }
-    body { font-family: 'Inter', sans-serif; }
-    .heading { font-family: 'Playfair Display', serif; }
-    .hero-bg { background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://picsum.photos/id/1015/2000/1200') center/cover; }
-    .product-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-    .product-card:hover { transform: translateY(-12px) scale(1.03); box-shadow: 0 25px 50px -12px rgb(212 175 119 / 0.3); }
-    .whatsapp-float { animation: pulse 2s infinite; }
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c87a;
+      --gold-dark: #a07830;
+      --cream: #faf7f2;
+      --dark: #1a1208;
+      --muted: #7a6a50;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); }
+    .heading { font-family: 'Cormorant Garamond', serif; }
+    .hero-bg {
+      background: linear-gradient(135deg, rgba(10,8,3,0.82) 0%, rgba(26,18,8,0.70) 100%),
+                  url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1800&q=80') center/cover no-repeat;
+    }
+    .product-card {
+      transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #fff;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px -10px rgba(201,168,76,0.25);
+    }
+    .badge-stock {
+      position: absolute;
+      top: 14px; left: 14px;
+      background: linear-gradient(135deg, #e53e3e, #c53030);
+      color: #fff;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 700;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(229,62,62,0.4);
+    }
+    .gold-line { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1.5px; background:var(--gold); transition:width .3s; }
+    .nav-link:hover::after { width:100%; }
+    .cat-btn { transition: all .25s; border: 1.5px solid #e0d5c3; }
+    .cat-btn.active, .cat-btn:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+    .whatsapp-float { animation: glow 2.5s ease-in-out infinite alternate; }
+    @keyframes glow { from { box-shadow: 0 6px 20px rgba(37,211,102,0.3); } to { box-shadow: 0 6px 30px rgba(37,211,102,0.65); } }
+    .img-wrap { overflow:hidden; }
+    .img-wrap img { transition: transform 0.6s ease; }
+    .product-card:hover .img-wrap img { transform: scale(1.06); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
   </style>
 </head>
-<body class="bg-white">
+<body>
 
-  <!-- NAVBAR tyler.com style -->
-  <nav class="bg-white shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <h1 class="text-4xl heading tracking-tighter text-amber-800">Marlo</h1>
-        <span class="text-4xl font-light text-[var(--gold)]">Store</span>
+  <!-- NAVBAR -->
+  <nav class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-amber-100">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-1">
+        <h1 class="text-3xl heading font-bold tracking-tight text-amber-900">Marlo</h1>
+        <span class="text-3xl heading font-light text-[var(--gold)] ml-1">Store</span>
       </div>
-      <div class="hidden md:flex gap-8 text-lg font-medium">
-        <a href="#" class="hover:text-[var(--gold)]">Accueil</a>
-        <a href="#boutique" class="hover:text-[var(--gold)]">Boutique</a>
-        <a href="#categories" class="hover:text-[var(--gold)]">Catégories</a>
+      <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide text-gray-700">
+        <a href="#" class="nav-link hover:text-[var(--gold)] transition-colors">Accueil</a>
+        <a href="#boutique" class="nav-link hover:text-[var(--gold)] transition-colors">Boutique</a>
+        <a href="#categories" class="nav-link hover:text-[var(--gold)] transition-colors">Catégories</a>
       </div>
-      <div class="flex items-center gap-6">
-        <button onclick="toggleCart()" class="relative text-2xl hover:text-[var(--gold)]"><i class="fa-solid fa-cart-shopping"></i><span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span></button>
-        <!-- WhatsApp flottant avec ton nouveau lien -->
+      <div class="flex items-center gap-4">
+        <button onclick="toggleCart()" class="relative text-xl hover:text-[var(--gold)] transition-colors p-2">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count" class="absolute -top-0 -right-0 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
         <a href="https://wa.me/message/U3AUHWUIXGFQC1" target="_blank"
-           class="whatsapp-float bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-3xl flex items-center gap-2 shadow-xl">
-          <i class="fa-brands fa-whatsapp text-2xl"></i>
-          <span class="font-semibold">Commander via WhatsApp</span>
+           class="whatsapp-float bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg text-sm font-semibold transition-colors">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span class="hidden sm:inline">Commander</span>
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO tyler.com style -->
-  <header class="hero-bg h-screen flex items-center text-white">
-    <div class="max-w-4xl mx-auto text-center px-6">
-      <h2 class="text-7xl heading mb-4">Élégance au quotidien</h2>
-      <p class="text-3xl mb-8">Parfums • Sacs • Chaussures • Maison • Beauté • Cuisine</p>
-      <a href="#boutique" class="inline-block bg-[var(--gold)] hover:bg-amber-700 text-black px-12 py-5 rounded-3xl text-2xl font-medium shadow-2xl">Découvrir la collection</a>
+  <!-- HERO -->
+  <header class="hero-bg min-h-screen flex items-center text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23c9a84c\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    <div class="max-w-5xl mx-auto text-center px-6 relative z-10">
+      <p class="text-[var(--gold-light)] text-xs tracking-[0.35em] uppercase mb-6 font-medium">Collection Exclusive 2026</p>
+      <h2 class="text-6xl md:text-8xl heading font-bold leading-tight mb-6">Élégance<br/><em class="text-[var(--gold)]">au quotidien</em></h2>
+      <div class="gold-line w-32 mx-auto mb-8"></div>
+      <p class="text-lg md:text-xl text-gray-300 mb-10 font-light tracking-wide">Parfums · Beauté · Chaussures · Maison · Cuisine · High-Tech</p>
+      <a href="#boutique" class="inline-block bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-white px-10 py-4 rounded-full text-base font-semibold tracking-wide shadow-2xl transition-all hover:scale-105">
+        Découvrir la collection
+      </a>
     </div>
   </header>
 
   <!-- CATÉGORIES -->
-  <section id="categories" class="py-20 bg-gray-50">
+  <section id="categories" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-5xl heading text-center mb-12">Nos univers</h2>
-      <div id="category-filters" class="flex flex-wrap gap-4 justify-center"></div>
+      <p class="text-xs tracking-[0.3em] uppercase text-[var(--gold)] text-center mb-3 font-medium">Explorer</p>
+      <h2 class="text-4xl md:text-5xl heading font-bold text-center mb-12">Nos univers</h2>
+      <div class="gold-line w-24 mx-auto mb-10"></div>
+      <div id="category-filters" class="flex flex-wrap gap-3 justify-center"></div>
     </div>
   </section>
 
   <!-- BOUTIQUE -->
-  <section id="boutique" class="py-20">
+  <section id="boutique" class="py-20 bg-[var(--cream)]">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-5xl heading text-center mb-12">Produits phares</h2>
-      <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
+      <p class="text-xs tracking-[0.3em] uppercase text-[var(--gold)] text-center mb-3 font-medium">Sélection</p>
+      <h2 class="text-4xl md:text-5xl heading font-bold text-center mb-12">Produits phares</h2>
+      <div class="gold-line w-24 mx-auto mb-14"></div>
+      <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"></div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-900 text-white py-16">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <h2 class="text-4xl heading mb-4">Marlo Store</h2>
-      <p>© 2026 – Boutique 100% gratuite sur GitHub</p>
-      <p class="mt-4 text-sm">Paiement simple et rapide via WhatsApp</p>
+  <footer class="bg-[var(--dark)] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-5xl heading font-bold mb-2">Marlo <span class="text-[var(--gold)]">Store</span></h2>
+        <div class="gold-line w-24 mx-auto my-6"></div>
+        <p class="text-sm text-gray-400 tracking-wide mb-3">Paiement simple et rapide via WhatsApp</p>
+        <p class="text-sm text-[var(--gold-light)] font-medium">
+          <i class="fa-solid fa-truck mr-2"></i>Livraison partout au Bénin (Cotonou, Calavi, Porto-Novo)
+        </p>
+      </div>
+      <div class="border-t border-white/10 pt-8 text-center text-xs text-gray-500">
+        © 2026 Marlo Store – Tous droits réservés
+      </div>
     </div>
   </footer>
 
   <!-- MODAL PRODUIT -->
-  <div id="product-modal" class="hidden fixed inset-0 bg-black/70 z-[200] flex items-center justify-center">
-    <div class="bg-white max-w-2xl w-full mx-4 rounded-3xl overflow-hidden">
+  <div id="product-modal" class="hidden fixed inset-0 bg-black/75 z-[200] flex items-center justify-center p-4" onclick="if(event.target===this)closeModal()">
+    <div class="bg-white max-w-2xl w-full rounded-3xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto">
       <div id="modal-content" class="p-8"></div>
     </div>
   </div>
 
   <!-- PANIER -->
-  <div id="cart-modal" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-end md:items-center justify-center">
-    <div class="bg-white w-full max-w-lg md:rounded-3xl rounded-t-3xl max-h-[90vh] overflow-auto">
+  <div id="cart-modal" class="hidden fixed inset-0 bg-black/75 z-[100] flex items-end md:items-center justify-center" onclick="if(event.target===this)toggleCart()">
+    <div class="bg-white w-full max-w-lg md:rounded-3xl rounded-t-3xl max-h-[90vh] flex flex-col">
       <div class="p-6 border-b flex justify-between items-center">
-        <h3 class="text-2xl font-bold">Ton panier</h3>
-        <button onclick="toggleCart()" class="text-3xl">×</button>
+        <h3 class="text-2xl heading font-bold">Votre panier</h3>
+        <button onclick="toggleCart()" class="text-3xl text-gray-400 hover:text-gray-700 transition-colors leading-none">&times;</button>
       </div>
-      <div id="cart-items" class="p-6"></div>
-      <div class="p-6 border-t">
-        <div class="flex justify-between text-xl font-bold mb-6">
+      <div id="cart-items" class="p-6 flex-1 overflow-y-auto"></div>
+      <div class="p-6 border-t bg-gray-50">
+        <div class="flex justify-between text-lg font-bold mb-4">
           <span>Total</span>
-          <span id="cart-total">0,00 €</span>
+          <span id="cart-total" class="text-amber-800">0 FCFA</span>
         </div>
-        <button onclick="checkout()" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-3xl text-xl flex items-center justify-center gap-3">
-          <i class="fa-brands fa-whatsapp text-3xl"></i> Commander tout via WhatsApp
+        <button onclick="checkout()" class="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 text-base transition-colors shadow-lg">
+          <i class="fa-brands fa-whatsapp text-2xl"></i> Commander via WhatsApp
         </button>
       </div>
     </div>
   </div>
 
   <script>
-    // Produits (inspiré tyler.com)
     const products = [
-      {id:1, name:"Parfum Luxe Floral Éternel", price:59.99, category:"Parfum", img:"https://picsum.photos/id/1015/800/800", desc:"Notes de rose, jasmin et vanille. Flacon en verre soufflé main. 100ml."},
-      {id:2, name:"Parfum Boisé Mystique", price:69.99, category:"Parfum", img:"https://picsum.photos/id/133/800/800", desc:"Cèdre, patchouli et musc. Sillage intense et élégant."},
-      {id:3, name:"Sac Cuir Venezia", price:129.99, category:"Sac", img:"https://picsum.photos/id/201/800/800", desc:"Cuir italien pleine fleur. Doublure soie."},
-      {id:4, name:"Chaussures Sneakers Blanches", price:79.99, category:"Chaussure", img:"https://picsum.photos/id/1005/800/800", desc:"Design minimaliste, confort premium."},
-      {id:5, name:"Armoire de Rangement 3 portes", price:199.99, category:"Armoire et étagère", img:"https://picsum.photos/id/160/800/800", desc:"Bois massif, finition élégante."},
-      {id:6, name:"Étagère Murale Design", price:49.99, category:"Armoire et étagère", img:"https://picsum.photos/id/180/800/800", desc:"Style scandinave moderne."},
-      {id:7, name:"Pommade Coiffante Naturelle", price:12.99, category:"Pommade", img:"https://picsum.photos/id/251/800/800", desc:"Formule bio, tenue parfaite."},
-      {id:8, name:"Savon Artisanal à l'Huile d'Olive", price:8.99, category:"Savon", img:"https://picsum.photos/id/292/800/800", desc:"Hydratation intense, parfum délicat."},
-      {id:9, name:"Gel Douche Hydratant 500ml", price:15.99, category:"Gel de douche", img:"https://picsum.photos/id/312/800/800", desc:"Peau douce et parfumée."},
-      {id:10, name:"Set 12 Ustensiles Cuisine Silicone", price:39.99, category:"Ustensiles de cuisine", img:"https://picsum.photos/id/866/800/800", desc:"Design premium, anti-adhésif."}
+      // === BEAUTÉ & SOINS ===
+      {
+        id:1, category:"Beauté & Soins",
+        name:"Crème Miracle Cindynal",
+        shortDescription:"Adieu les imperfections ! Solution antifongique puissante pour une peau saine.",
+        detailedSpecs:"Formule apaisante, pénétration rapide, flacon compact. Antifongique certifié.",
+        price:3000,
+        imagePrompt:"Tube médical blanc et bleu, texture crème visible, fond studio épuré",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80"
+      },
+      {
+        id:2, category:"Beauté & Soins",
+        name:"Gamme Éclat Collagen Snail",
+        shortDescription:"Le secret de la jeunesse à la bave d'escargot pour un visage lisse et repulpé.",
+        detailedSpecs:"Hydratation intense, anti-âge, régénérateur cellulaire. Pack complet sérum + crème.",
+        price:12000,
+        imagePrompt:"Pack complet avec sérum et crème bave d'escargot, design premium, fond noir",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&q=80"
+      },
+      {
+        id:3, category:"Beauté & Soins",
+        name:"Coffret Professionnel Vitamine C (N°1 à 5)",
+        shortDescription:"La routine complète pour un teint éclatant et sans taches.",
+        detailedSpecs:"Mousse nettoyante (N1), Tonique sébum (N2), Sérum exfoliant (N3), Crème protectrice (N4). Tons orange vif, reflets dorés.",
+        price:10000,
+        imagePrompt:"5 produits Vitamine C alignés, dominante orange vif, reflets dorés agrumes",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80"
+      },
+      {
+        id:4, category:"Beauté & Soins",
+        name:"Crème Dépilatoire Magic Clean",
+        shortDescription:"Une peau douce en 5 minutes chrono, sans douleur.",
+        detailedSpecs:"Enrichie à l'Aloe Vera et Vitamine E. Convient aux zones sensibles.",
+        price:3000,
+        imagePrompt:"Tube vert et blanc, visuel jambe lisse, fond propre épuré",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&q=80"
+      },
+      {
+        id:5, category:"Beauté & Soins",
+        name:"Pommade Cocoa Butter & Lemon",
+        shortDescription:"Beurre de cacao gourmand pour une peau nourrie et un teint unifié.",
+        detailedSpecs:"Éclaircissant naturel, acide kojique, parfum délicat. Pot jaune/marron, texture onctueuse.",
+        price:3000,
+        imagePrompt:"Pot crème jaune marron, texture onctueuse beurre de cacao, fond bois",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&q=80"
+      },
+
+      // === PARFUMERIE ===
+      {
+        id:6, category:"Parfumerie",
+        name:"Kiss par Khalil T.",
+        shortDescription:"Une caresse florale et fruitée qui laisse un sillage inoubliable.",
+        detailedSpecs:"Parfum mixte (H/F), tenue longue durée. Flacon élégant, fond floral.",
+        price:2000,
+        imagePrompt:"Flacon de parfum élégant sur fond floral rose et pétales",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&q=80"
+      },
+      {
+        id:7, category:"Parfumerie",
+        name:"Coffret Camêe 2-en-1",
+        shortDescription:"L'élégance poudrée en duo : Eau de parfum et Déodorant assorti.",
+        detailedSpecs:"50ml + 50ml, notes florales douces. Boîtier duo, design classique.",
+        price:3000,
+        imagePrompt:"Coffret duo parfum et déodorant, design classique élégant, fond neutre",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80"
+      },
+      {
+        id:8, category:"Parfumerie",
+        name:"Collection Mousouf 4-en-1",
+        shortDescription:"Voyagez à travers 4 fragrances orientales d'exception.",
+        detailedSpecs:"Classique (chocolat/raisin), Wardi (rose), Ramadi et Blue. Coffret de 4 mini flacons luxueux.",
+        price:7000,
+        imagePrompt:"Coffret de 4 mini flacons parfum oriental luxueux, fond doré sombre",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1619994403073-2cec844b8e63?w=600&q=80"
+      },
+      {
+        id:9, category:"Parfumerie",
+        name:"Lune d'Été",
+        shortDescription:"Une fragrance légère et estivale, douce comme une nuit étoilée.",
+        detailedSpecs:"Notes florales et musquées. Flacon design, sillage discret et raffiné.",
+        price:3000,
+        imagePrompt:"Flacon parfum bleu nuit étoilé, ambiance estivale douce",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1551406483-3731d1997540?w=600&q=80"
+      },
+      {
+        id:10, category:"Parfumerie",
+        name:"Black Market",
+        shortDescription:"Un parfum audacieux et magnétique pour les esprits libres.",
+        detailedSpecs:"Notes boisées, épicées et musquées. Longue tenue. Flacon sombre et luxueux.",
+        price:3000,
+        imagePrompt:"Flacon parfum noir brillant, ambiance sombre luxueuse, fond studio",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&q=80"
+      },
+      {
+        id:11, category:"Parfumerie",
+        name:"Matelot",
+        shortDescription:"L'aventure marine embouteillée, fraîcheur et caractère.",
+        detailedSpecs:"Notes marines, bergamote et cèdre. Flacon inspiré de la mer, unisexe.",
+        price:8000,
+        imagePrompt:"Flacon parfum bleu marine, notes aquatiques, fond océan",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1567922045116-2a00fae2ed03?w=600&q=80"
+      },
+      {
+        id:12, category:"Parfumerie",
+        name:"Lattafa Rave",
+        shortDescription:"Le raffinement oriental dans toute sa splendeur.",
+        detailedSpecs:"Oud, rose et ambre. Flacon design Lattafa, longévité exceptionnelle.",
+        price:8000,
+        imagePrompt:"Flacon Lattafa Rave oriental doré, luxueux, fond arabesque",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=600&q=80"
+      },
+      {
+        id:13, category:"Parfumerie",
+        name:"Unique",
+        shortDescription:"Une signature olfactive hors du commun, pour les âmes singulières.",
+        detailedSpecs:"Mélange unique de floral, boisé et épicé. Flacon artisanal exclusif.",
+        price:5000,
+        imagePrompt:"Flacon parfum artisanal minimaliste, design exclusif, fond blanc épuré",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&q=80"
+      },
+      {
+        id:14, category:"Parfumerie",
+        name:"My Way",
+        shortDescription:"Voyagez, explorez, vivez — un parfum pour les femmes libres.",
+        detailedSpecs:"Notes de fleur d'oranger, bois de santal et musc. Inspiré de l'Armani My Way.",
+        price:3000,
+        imagePrompt:"Flacon parfum féminin élégant bleu ciel, fond voyage inspiration",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1600428610016-7f8f3999a0a0?w=600&q=80"
+      },
+
+      // === CHAUSSURES ===
+      {
+        id:15, category:"Chaussures",
+        name:"Mules \"Clover Luxe\"",
+        shortDescription:"Le confort rencontre le style pour vos sorties décontractées.",
+        detailedSpecs:"Modèles KA3004/KA3019, semelle effet liège, boucle réglable. Fond neutre, focus sur la boucle.",
+        price:5000,
+        imagePrompt:"Mules sandales élégantes sur fond neutre, semelle liège, boucle dorée",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80"
+      },
+      {
+        id:16, category:"Chaussures",
+        name:"Baskets Urban Graphik",
+        shortDescription:"Affirmez votre style avec ces sneakers au design futuriste.",
+        detailedSpecs:"Modèle JN62A, semelle crantée, accents orange/fluo. Pointures 40-45. Basket vue profil, éclairage dynamique.",
+        price:7000,
+        imagePrompt:"Sneaker futuriste vue profil, accents orange fluo, fond sombre dynamique",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80"
+      },
+
+      // === USTENSILES DE CUISINE ===
+      {
+        id:17, category:"Ustensiles de Cuisine",
+        name:"Verres \"Or Royal\" (Lot de 6)",
+        shortDescription:"Élevez vos réceptions avec ces flûtes à champagne bordées d'or.",
+        detailedSpecs:"Verre haute qualité, liseré doré, 6 pièces. Image montrant les 6 verres alignés avec reflets brillants.",
+        price:8500,
+        imagePrompt:"6 flûtes à champagne alignées avec liseré doré, reflets brillants, fond sombre élégant",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+      },
+      {
+        id:18, category:"Ustensiles de Cuisine",
+        name:"Batterie Antiadhésive Luxe",
+        shortDescription:"Cuisinez comme un chef sans que rien ne colle.",
+        detailedSpecs:"Lot de 4 casseroles de luxe. Revêtement antiadhésif premium, fond en acier inox.",
+        price:25000,
+        imagePrompt:"Set casseroles antiadhésives luxe sur fond cuisine épurée, fond blanc",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1585515320310-259814833e62?w=600&q=80"
+      },
+      {
+        id:19, category:"Ustensiles de Cuisine",
+        name:"Batterie Silver Crest (3 Poêles)",
+        shortDescription:"La qualité Silver Crest pour une cuisine sans effort au quotidien.",
+        detailedSpecs:"3 poêles Silver Crest, revêtement antiadhésif, différentes tailles. Fond cuisine épuré.",
+        price:10000,
+        imagePrompt:"3 poêles Silver Crest antiadhésives, fond cuisine épuré minimaliste",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80"
+      },
+      {
+        id:20, category:"Ustensiles de Cuisine",
+        name:"Distributeur Globe Terrestre",
+        shortDescription:"Servez vos boissons avec originalité grâce à ce globe design.",
+        detailedSpecs:"Capacité 1.5L à 3.5L, robinet intégré, acrylique transparent. Globe rempli d'un liquide ambré sur un bar.",
+        price:10000,
+        imagePrompt:"Globe terrestre distributeur boisson acrylique transparent rempli liquide ambré, fond bar",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1595341888016-a392ef81b7de?w=600&q=80"
+      },
+
+      // === ARMOIRE & ÉTAGÈRES ===
+      {
+        id:21, category:"Armoire & Étagères",
+        name:"Dressing Textile 2 Battants",
+        shortDescription:"Rangez toute votre garde-robe en un clin d'œil.",
+        detailedSpecs:"Housse anti-poussière, structure acier, 2 battants. Design modulable.",
+        price:15000,
+        imagePrompt:"Dressing textile modulable 2 battants, structure acier, fond chambre moderne",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=600&q=80"
+      },
+      {
+        id:22, category:"Armoire & Étagères",
+        name:"Dressing Textile 3 Battants",
+        shortDescription:"La solution ultime pour une grande garde-robe parfaitement organisée.",
+        detailedSpecs:"Housse anti-poussière, structure acier renforcé, 3 battants. Grand volume de rangement.",
+        price:20000,
+        imagePrompt:"Dressing textile 3 battants spacieux, structure acier, fond chambre élégante",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=600&q=80"
+      },
+      {
+        id:23, category:"Armoire & Étagères",
+        name:"Organisateur de Chaussures Yomio",
+        shortDescription:"Fini le désordre ! Protégez vos chaussures avec style.",
+        detailedSpecs:"3 à 8 niveaux, housse de protection, cadre inox. Rangement élégant et pratique.",
+        price:10000,
+        imagePrompt:"Organisateur chaussures étagère inox multi-niveaux, fond blanc propre",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&q=80"
+      },
+
+      // === HYGIÈNE & SAVON ===
+      {
+        id:24, category:"Hygiène & Savon",
+        name:"Savon Blanchissant White Skin",
+        shortDescription:"Un nettoyage profond pour un teint clarifié et sans taches.",
+        detailedSpecs:"Élimine l'excès de sébum, anti-imperfection. Savon délicat pour usage quotidien.",
+        price:2500,
+        imagePrompt:"Savon blanchissant blanc et épuré, fond lumineux studio beauté",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=600&q=80"
+      },
+      {
+        id:25, category:"Hygiène & Savon",
+        name:"Gel Douche Exfoliant Busjung",
+        shortDescription:"Un gommage gourmand sous la douche pour une peau de soie.",
+        detailedSpecs:"Vitamine C & Curcuma, élimine les peaux mortes. Flacon généreux, parfum agrumes.",
+        price:7000,
+        imagePrompt:"Flacon gel douche exfoliant jaune curcuma vitamine C, fond douche épuré",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&q=80"
+      },
+
+      // === MAISON & HIGH-TECH ===
+      {
+        id:26, category:"Maison & High-Tech",
+        name:"Bande LED Intelligente RGBIC 10m",
+        shortDescription:"Transformez l'ambiance de votre salon depuis votre smartphone.",
+        detailedSpecs:"10m, contrôle App/Télécommande, synchronisation musique. Compatible Alexa/Google.",
+        price:12000,
+        imagePrompt:"LED strip RGBIC illuminant salon moderne, couleurs vives, fond sombre ambiance",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1558618047-f4e70e5f5547?w=600&q=80"
+      },
+      {
+        id:27, category:"Maison & High-Tech",
+        name:"Bande LED Intelligente RGBIC 5m",
+        shortDescription:"Ambiance lumineuse sur mesure pour votre espace de vie.",
+        detailedSpecs:"5m, contrôle App/Télécommande, synchronisation musique. Couleurs RGBIC multizone.",
+        price:8500,
+        imagePrompt:"LED strip RGBIC 5m, ambiance colorée chambre moderne, fond sombre",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1550985543-49bee3167284?w=600&q=80"
+      },
+      {
+        id:28, category:"Maison & High-Tech",
+        name:"Ring Light Pro 14\"",
+        shortDescription:"L'accessoire indispensable pour des photos et vidéos parfaites.",
+        detailedSpecs:"36cm, lumière multicolore, trépied inclus. Idéal pour créateurs de contenu.",
+        price:8000,
+        imagePrompt:"Ring light 14 pouces blanc sur trépied, fond studio photo élégant",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1631700611307-37dbcb89ef7e?w=600&q=80"
+      },
+      {
+        id:29, category:"Maison & High-Tech",
+        name:"Planche Fitness Premium",
+        shortDescription:"Sculptez votre corps à domicile avec cet équipement polyvalent.",
+        detailedSpecs:"Structure robuste, multifonction, idéale pour abdos, bras et gainage. Pliable et compact.",
+        price:20000,
+        imagePrompt:"Planche fitness multifonction moderne, fond salle de sport épurée",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80"
+      },
+      {
+        id:30, category:"Maison & High-Tech",
+        name:"Tondeuse Professionnelle Daling",
+        shortDescription:"Un coiffeur à domicile pour un look toujours impeccable.",
+        detailedSpecs:"Lames inox auto-affûtantes, 5 sabots inclus, rechargeable USB. Silencieuse et précise.",
+        price:12000,
+        imagePrompt:"Tondeuse professionnelle Daling noire et argent, fond studio propre",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1590439471364-192aa70c0b53?w=600&q=80"
+      },
+      {
+        id:31, category:"Maison & High-Tech",
+        name:"Sèche-Ongles UV",
+        shortDescription:"Un résultat de manucure professionnelle en quelques minutes.",
+        detailedSpecs:"Lampe UV/LED, séchage en 30-60 secondes, compatible gel et vernis UV. Design compact.",
+        price:7000,
+        imagePrompt:"Sèche-ongles UV compact blanc, lumière violette allumée, fond beauté",
+        stockStatus:"Limited",
+        img:"https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80"
+      }
     ];
 
     let cart = [];
     let currentFilter = 'all';
 
-    // Fonction WhatsApp avec ton nouveau lien exact
-    function openWhatsApp() {
-      window.open('https://wa.me/message/U3AUHWUIXGFQC1', '_blank');
+    function openWhatsApp(productName = '') {
+      if (productName) {
+        const msg = encodeURIComponent(`Bonjour ! Je suis intéressé(e) par le produit : *${productName}*. Pouvez-vous me donner plus d'informations ?`);
+        window.open(`https://wa.me/message/U3AUHWUIXGFQC1?text=${msg}`, '_blank');
+      } else {
+        window.open('https://wa.me/message/U3AUHWUIXGFQC1', '_blank');
+      }
+    }
+
+    function formatPrice(price) {
+      return price.toLocaleString('fr-FR') + ' FCFA';
     }
 
     function renderProducts() {
       const grid = document.getElementById('products-grid');
       const filtered = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
       grid.innerHTML = filtered.map(p => `
-        <div class="product-card bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100">
-          <img src="${p.img}" class="w-full h-72 object-cover">
-          <div class="p-6">
-            <span class="text-xs uppercase tracking-widest text-[var(--gold)]">${p.category}</span>
-            <h3 class="text-2xl heading mt-2 mb-1">${p.name}</h3>
-            <p class="text-3xl font-bold text-amber-800">${p.price.toFixed(2)} €</p>
-            <p class="text-sm text-gray-600 mt-3 line-clamp-2">${p.desc}</p>
-            <div class="flex gap-3 mt-6">
-              <button onclick="addToCart(${p.id}); event.stopImmediatePropagation()" class="flex-1 bg-black text-white py-4 rounded-2xl hover:bg-gray-800">Ajouter au panier</button>
-              <button onclick="showProductModal(${p.id}); event.stopImmediatePropagation()" class="flex-1 border border-black py-4 rounded-2xl hover:bg-gray-100">Détails</button>
+        <div class="product-card rounded-3xl overflow-hidden shadow-md border border-gray-100 cursor-pointer" onclick="showProductModal(${p.id})">
+          <div class="relative">
+            <span class="badge-stock"><i class="fa-solid fa-fire-flame-curved mr-1"></i>Stocks Limités</span>
+            <div class="img-wrap h-56 bg-gray-100">
+              <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80'">
             </div>
-            <button onclick="openWhatsApp(); event.stopImmediatePropagation()" 
-                    class="mt-4 w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-3xl flex items-center justify-center gap-3 text-lg">
-              <i class="fa-brands fa-whatsapp"></i> Commander via WhatsApp
-            </button>
+          </div>
+          <div class="p-5">
+            <span class="text-[10px] uppercase tracking-widest text-[var(--gold)] font-semibold">${p.category}</span>
+            <h3 class="text-lg heading font-bold mt-1 mb-1 leading-tight line-clamp-2">${p.name}</h3>
+            <p class="text-xs text-gray-500 mb-3 line-clamp-2">${p.shortDescription}</p>
+            <p class="text-xl font-bold text-amber-800 mb-4">${formatPrice(p.price)}</p>
+            <div class="flex gap-2">
+              <button onclick="addToCart(${p.id}); event.stopPropagation()" class="flex-1 bg-[var(--dark)] text-white py-2.5 rounded-xl text-xs font-semibold hover:bg-gray-800 transition-colors">
+                <i class="fa-solid fa-cart-plus mr-1"></i>Panier
+              </button>
+              <button onclick="openWhatsApp('${p.name.replace(/'/g,"\\'")}'); event.stopPropagation()" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 transition-colors">
+                <i class="fa-brands fa-whatsapp text-sm"></i>Commander
+              </button>
+            </div>
           </div>
         </div>
       `).join('');
@@ -154,37 +543,71 @@
     function showProductModal(id) {
       const p = products.find(x => x.id === id);
       document.getElementById('modal-content').innerHTML = `
-        <button onclick="closeModal()" class="float-right text-4xl">×</button>
-        <img src="${p.img}" class="w-full h-96 object-cover rounded-2xl mb-8">
-        <h2 class="text-4xl heading">${p.name}</h2>
-        <p class="text-4xl font-bold text-amber-800 mt-2">${p.price.toFixed(2)} €</p>
-        <p class="mt-6 leading-relaxed">${p.desc}</p>
-        <button onclick="openWhatsApp(); closeModal()" class="mt-10 w-full bg-green-500 text-white py-6 rounded-3xl text-xl flex items-center justify-center gap-4">
-          <i class="fa-brands fa-whatsapp text-3xl"></i> Commander maintenant sur WhatsApp
-        </button>
+        <div class="relative mb-6">
+          <span style="background:linear-gradient(135deg,#e53e3e,#c53030);color:#fff;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;font-weight:700;display:inline-block;margin-bottom:12px;">
+            <i class="fa-solid fa-fire-flame-curved mr-1"></i>Stocks Limités
+          </span>
+          <button onclick="closeModal()" class="absolute top-0 right-0 text-3xl text-gray-400 hover:text-gray-700 transition-colors leading-none">&times;</button>
+        </div>
+        <div class="rounded-2xl overflow-hidden h-72 mb-6 bg-gray-100">
+          <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80'">
+        </div>
+        <span class="text-xs uppercase tracking-widest text-[var(--gold)] font-semibold">${p.category}</span>
+        <h2 class="text-3xl heading font-bold mt-1 mb-2">${p.name}</h2>
+        <p class="text-2xl font-bold text-amber-800 mb-4">${formatPrice(p.price)}</p>
+        <div class="gold-line mb-4"></div>
+        <p class="text-gray-600 mb-3 leading-relaxed">${p.shortDescription}</p>
+        <p class="text-sm text-gray-500 leading-relaxed bg-amber-50 rounded-xl p-4 mb-6">${p.detailedSpecs}</p>
+        <div class="flex gap-3">
+          <button onclick="addToCart(${p.id}); closeModal()" class="flex-1 bg-[var(--dark)] text-white py-4 rounded-2xl font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+            <i class="fa-solid fa-cart-plus"></i> Ajouter au panier
+          </button>
+          <button onclick="openWhatsApp('${p.name.replace(/'/g,"\\'")}'); closeModal()" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 transition-colors shadow-lg">
+            <i class="fa-brands fa-whatsapp text-xl"></i> Commander
+          </button>
+        </div>
       `;
       document.getElementById('product-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
       document.getElementById('product-modal').classList.add('hidden');
+      document.body.style.overflow = '';
     }
+
+    const categoryIcons = {
+      'all': 'fa-grid-2',
+      'Beauté & Soins': 'fa-star',
+      'Parfumerie': 'fa-bottle-droplet',
+      'Chaussures': 'fa-shoe-prints',
+      'Ustensiles de Cuisine': 'fa-utensils',
+      'Armoire & Étagères': 'fa-box-open',
+      'Hygiène & Savon': 'fa-soap',
+      'Maison & High-Tech': 'fa-bolt'
+    };
 
     function createFilters() {
       const cats = ['all', ...new Set(products.map(p => p.category))];
       const container = document.getElementById('category-filters');
-      container.innerHTML = cats.map(cat => `
-        <button onclick="filterCategory('${cat}')" 
-                class="px-8 py-4 rounded-3xl font-medium ${currentFilter === cat ? 'bg-[var(--gold)] text-black' : 'bg-white border hover:border-[var(--gold)]'}">
-          ${cat === 'all' ? 'Tout' : cat}
-        </button>
-      `).join('');
+      container.innerHTML = cats.map(cat => {
+        const icon = categoryIcons[cat] || 'fa-tag';
+        const label = cat === 'all' ? 'Tout voir' : cat;
+        const isActive = currentFilter === cat;
+        return `
+          <button onclick="filterCategory('${cat}')"
+                  class="cat-btn ${isActive ? 'active' : 'bg-white text-gray-700'} px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 shadow-sm">
+            <i class="fa-solid ${icon} text-xs"></i> ${label}
+          </button>
+        `;
+      }).join('');
     }
 
     function filterCategory(cat) {
       currentFilter = cat;
       createFilters();
       renderProducts();
+      document.getElementById('boutique').scrollIntoView({ behavior: 'smooth' });
     }
 
     function addToCart(id) {
@@ -193,7 +616,15 @@
       if (existing) existing.quantity++;
       else cart.push({...product, quantity: 1});
       updateCartCount();
-      alert(`${product.name} ajouté au panier !`);
+      showToast(`${product.name} ajouté !`);
+    }
+
+    function showToast(msg) {
+      const t = document.createElement('div');
+      t.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-[var(--dark)] text-white px-6 py-3 rounded-full shadow-2xl text-sm font-medium z-[999] transition-all';
+      t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(() => t.remove(), 2500);
     }
 
     function updateCartCount() {
@@ -201,33 +632,42 @@
       document.getElementById('cart-count').textContent = count;
     }
 
-    function toggleCart() {
-      const modal = document.getElementById('cart-modal');
+    function renderCart() {
       const itemsContainer = document.getElementById('cart-items');
       const totalEl = document.getElementById('cart-total');
-
-      if (modal.classList.contains('hidden')) {
-        modal.classList.remove('hidden');
-        itemsContainer.innerHTML = cart.map(item => `
-          <div class="flex gap-4 mb-6">
-            <img src="${item.img}" class="w-20 h-20 object-cover rounded-2xl">
+      itemsContainer.innerHTML = cart.length === 0
+        ? '<p class="text-center text-gray-400 py-12 text-sm">Votre panier est vide</p>'
+        : cart.map(item => `
+          <div class="flex gap-4 mb-5 pb-5 border-b border-gray-100 last:border-0">
+            <img src="${item.img}" class="w-16 h-16 object-cover rounded-xl" onerror="this.src='https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=200&q=80'">
             <div class="flex-1">
-              <p class="font-medium">${item.name}</p>
-              <p class="text-sm text-gray-500">${item.price.toFixed(2)} € × ${item.quantity}</p>
-              <div class="flex gap-3 mt-3">
-                <button onclick="changeQuantity(${item.id}, -1)" class="text-red-600">-</button>
-                <span class="font-bold">${item.quantity}</span>
-                <button onclick="changeQuantity(${item.id}, 1)" class="text-green-600">+</button>
+              <p class="font-semibold text-sm leading-tight">${item.name}</p>
+              <p class="text-xs text-gray-400 mt-0.5">${formatPrice(item.price)} × ${item.quantity}</p>
+              <div class="flex items-center gap-3 mt-2">
+                <button onclick="changeQuantity(${item.id}, -1)" class="w-7 h-7 rounded-full border border-gray-200 text-gray-600 hover:border-red-400 hover:text-red-500 transition-colors text-sm flex items-center justify-center">−</button>
+                <span class="font-bold text-sm">${item.quantity}</span>
+                <button onclick="changeQuantity(${item.id}, 1)" class="w-7 h-7 rounded-full border border-gray-200 text-gray-600 hover:border-green-400 hover:text-green-500 transition-colors text-sm flex items-center justify-center">+</button>
               </div>
             </div>
-            <div class="font-bold">${(item.price * item.quantity).toFixed(2)} €</div>
+            <div class="font-bold text-sm text-amber-800">${formatPrice(item.price * item.quantity)}</div>
           </div>
-        `).join('') || '<p class="text-center text-gray-400 py-12">Ton panier est vide</p>';
+        `).join('');
 
-        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        totalEl.textContent = total.toFixed(2) + ' €';
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      totalEl.textContent = formatPrice(total);
+    }
+
+    let cartOpen = false;
+    function toggleCart() {
+      const modal = document.getElementById('cart-modal');
+      cartOpen = !cartOpen;
+      if (cartOpen) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        renderCart();
       } else {
         modal.classList.add('hidden');
+        document.body.style.overflow = '';
       }
     }
 
@@ -236,19 +676,21 @@
       if (!item) return;
       item.quantity += change;
       if (item.quantity < 1) cart = cart.filter(i => i.id !== id);
-      toggleCart();
       updateCartCount();
+      renderCart();
     }
 
     function checkout() {
       if (cart.length === 0) return;
-      openWhatsApp(); // ouvre directement ton nouveau lien WhatsApp
+      const lines = cart.map(item => `• ${item.name} × ${item.quantity} = ${formatPrice(item.price * item.quantity)}`).join('\n');
+      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const msg = encodeURIComponent(`Bonjour ! Je souhaite commander :\n\n${lines}\n\n*Total : ${formatPrice(total)}*\n\nMerci de confirmer ma commande 🙏`);
+      window.open(`https://wa.me/message/U3AUHWUIXGFQC1?text=${msg}`, '_blank');
       cart = [];
       updateCartCount();
       toggleCart();
     }
 
-    // Initialisation
     window.onload = () => {
       createFilters();
       renderProducts();

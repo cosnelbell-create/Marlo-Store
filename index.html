@@ -6,8 +6,8 @@
   <title>Marlo Store • Élégance au quotidien</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
     :root {
       --gold: #c9a84c;
       --gold-light: #e8c87a;
@@ -15,51 +15,65 @@
       --cream: #faf7f2;
       --dark: #1a1208;
       --muted: #7a6a50;
+      --orange: #f97316;
+      --orange-light: #fed7aa;
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); }
     .heading { font-family: 'Cormorant Garamond', serif; }
+
+    /* HERO */
     .hero-bg {
-      background: linear-gradient(135deg, rgba(10,8,3,0.82) 0%, rgba(26,18,8,0.70) 100%),
+      background: linear-gradient(135deg, rgba(10,8,3,0.85) 0%, rgba(26,18,8,0.72) 100%),
                   url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1800&q=80') center/cover no-repeat;
     }
+
+    /* CARDS */
     .product-card {
-      transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.45s cubic-bezier(0.4,0,0.2,1);
       background: #fff;
       position: relative;
     }
     .product-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 60px -10px rgba(201,168,76,0.25);
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px -10px rgba(201,168,76,0.22);
     }
     .badge-stock {
       position: absolute;
-      top: 14px; left: 14px;
+      top: 12px; left: 12px;
       background: linear-gradient(135deg, #e53e3e, #c53030);
       color: #fff;
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 4px 10px;
+      padding: 3px 9px;
       border-radius: 20px;
       font-weight: 700;
       z-index: 10;
       box-shadow: 0 4px 12px rgba(229,62,62,0.4);
     }
+
+    /* Vitamin C theme */
+    .vitc-card { background: linear-gradient(135deg, #fffbf0 0%, #fff7e6 100%); border: 1.5px solid #fde68a !important; }
+    .vitc-card .cat-label { color: var(--orange) !important; }
+    .vitc-card .price { color: #b45309 !important; }
+    .vitc-badge { background: linear-gradient(135deg, var(--orange), #ea580c) !important; }
+
     .gold-line { height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
     .nav-link { position: relative; }
     .nav-link::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1.5px; background:var(--gold); transition:width .3s; }
     .nav-link:hover::after { width:100%; }
-    .cat-btn { transition: all .25s; border: 1.5px solid #e0d5c3; }
+    .cat-btn { transition: all .25s; border: 1.5px solid #e0d5c3; cursor: pointer; }
     .cat-btn.active, .cat-btn:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
     .whatsapp-float { animation: glow 2.5s ease-in-out infinite alternate; }
     @keyframes glow { from { box-shadow: 0 6px 20px rgba(37,211,102,0.3); } to { box-shadow: 0 6px 30px rgba(37,211,102,0.65); } }
-    .img-wrap { overflow:hidden; }
+    .img-wrap { overflow: hidden; }
     .img-wrap img { transition: transform 0.6s ease; }
     .product-card:hover .img-wrap img { transform: scale(1.06); }
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--cream); }
     ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+    .line-clamp-2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
   </style>
 </head>
 <body>
@@ -69,15 +83,15 @@
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center gap-1">
         <h1 class="text-3xl heading font-bold tracking-tight text-amber-900">Marlo</h1>
-        <span class="text-3xl heading font-light text-[var(--gold)] ml-1">Store</span>
+        <span class="text-3xl heading font-light ml-1" style="color:var(--gold)">Store</span>
       </div>
       <div class="hidden md:flex gap-8 text-sm font-medium tracking-wide text-gray-700">
-        <a href="#" class="nav-link hover:text-[var(--gold)] transition-colors">Accueil</a>
-        <a href="#boutique" class="nav-link hover:text-[var(--gold)] transition-colors">Boutique</a>
-        <a href="#categories" class="nav-link hover:text-[var(--gold)] transition-colors">Catégories</a>
+        <a href="#" class="nav-link hover:text-amber-700 transition-colors">Accueil</a>
+        <a href="#boutique" class="nav-link hover:text-amber-700 transition-colors">Boutique</a>
+        <a href="#categories" class="nav-link hover:text-amber-700 transition-colors">Catégories</a>
       </div>
       <div class="flex items-center gap-4">
-        <button onclick="toggleCart()" class="relative text-xl hover:text-[var(--gold)] transition-colors p-2">
+        <button onclick="toggleCart()" class="relative text-xl hover:text-amber-700 transition-colors p-2">
           <i class="fa-solid fa-cart-shopping"></i>
           <span id="cart-count" class="absolute -top-0 -right-0 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
         </button>
@@ -92,13 +106,13 @@
 
   <!-- HERO -->
   <header class="hero-bg min-h-screen flex items-center text-white relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23c9a84c\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23c9a84c\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
     <div class="max-w-5xl mx-auto text-center px-6 relative z-10">
-      <p class="text-[var(--gold-light)] text-xs tracking-[0.35em] uppercase mb-6 font-medium">Collection Exclusive 2026</p>
-      <h2 class="text-6xl md:text-8xl heading font-bold leading-tight mb-6">Élégance<br/><em class="text-[var(--gold)]">au quotidien</em></h2>
+      <p style="color:var(--gold-light)" class="text-xs tracking-[0.35em] uppercase mb-6 font-medium">Collection Exclusive 2026</p>
+      <h2 class="text-6xl md:text-8xl heading font-bold leading-tight mb-6">Élégance<br/><em style="color:var(--gold)">au quotidien</em></h2>
       <div class="gold-line w-32 mx-auto mb-8"></div>
       <p class="text-lg md:text-xl text-gray-300 mb-10 font-light tracking-wide">Parfums · Beauté · Chaussures · Maison · Cuisine · High-Tech</p>
-      <a href="#boutique" class="inline-block bg-[var(--gold)] hover:bg-[var(--gold-dark)] text-white px-10 py-4 rounded-full text-base font-semibold tracking-wide shadow-2xl transition-all hover:scale-105">
+      <a href="#boutique" style="background:var(--gold)" class="inline-block hover:opacity-90 text-white px-10 py-4 rounded-full text-base font-semibold tracking-wide shadow-2xl transition-all hover:scale-105">
         Découvrir la collection
       </a>
     </div>
@@ -107,7 +121,7 @@
   <!-- CATÉGORIES -->
   <section id="categories" class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
-      <p class="text-xs tracking-[0.3em] uppercase text-[var(--gold)] text-center mb-3 font-medium">Explorer</p>
+      <p class="text-xs tracking-[0.3em] uppercase text-center mb-3 font-medium" style="color:var(--gold)">Explorer</p>
       <h2 class="text-4xl md:text-5xl heading font-bold text-center mb-12">Nos univers</h2>
       <div class="gold-line w-24 mx-auto mb-10"></div>
       <div id="category-filters" class="flex flex-wrap gap-3 justify-center"></div>
@@ -115,27 +129,25 @@
   </section>
 
   <!-- BOUTIQUE -->
-  <section id="boutique" class="py-20 bg-[var(--cream)]">
+  <section id="boutique" class="py-20" style="background:var(--cream)">
     <div class="max-w-7xl mx-auto px-6">
-      <p class="text-xs tracking-[0.3em] uppercase text-[var(--gold)] text-center mb-3 font-medium">Sélection</p>
-      <h2 class="text-4xl md:text-5xl heading font-bold text-center mb-12">Produits phares</h2>
+      <p class="text-xs tracking-[0.3em] uppercase text-center mb-3 font-medium" style="color:var(--gold)">Sélection</p>
+      <h2 class="text-4xl md:text-5xl heading font-bold text-center mb-12">Nos produits</h2>
       <div class="gold-line w-24 mx-auto mb-14"></div>
-      <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"></div>
+      <div id="products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-7"></div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-[var(--dark)] text-white pt-16 pb-8">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-10">
-        <h2 class="text-5xl heading font-bold mb-2">Marlo <span class="text-[var(--gold)]">Store</span></h2>
-        <div class="gold-line w-24 mx-auto my-6"></div>
-        <p class="text-sm text-gray-400 tracking-wide mb-3">Paiement simple et rapide via WhatsApp</p>
-        <p class="text-sm text-[var(--gold-light)] font-medium">
-          <i class="fa-solid fa-truck mr-2"></i>Livraison partout au Bénin (Cotonou, Calavi, Porto-Novo)
-        </p>
-      </div>
-      <div class="border-t border-white/10 pt-8 text-center text-xs text-gray-500">
+  <footer style="background:var(--dark)" class="text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-5xl heading font-bold mb-2">Marlo <span style="color:var(--gold)">Store</span></h2>
+      <div class="gold-line w-24 mx-auto my-6"></div>
+      <p class="text-sm text-gray-400 tracking-wide mb-3">Paiement simple et rapide via WhatsApp</p>
+      <p class="text-sm font-medium" style="color:var(--gold-light)">
+        <i class="fa-solid fa-truck mr-2"></i>Livraison partout au Bénin (Cotonou, Calavi, Porto-Novo)
+      </p>
+      <div class="border-t border-white/10 mt-10 pt-8 text-xs text-gray-500">
         © 2026 Marlo Store – Tous droits réservés
       </div>
     </div>
@@ -170,341 +182,454 @@
 
   <script>
     const products = [
-      // === BEAUTÉ & SOINS ===
-      {
-        id:1, category:"Beauté & Soins",
-        name:"Crème Miracle Cindynal",
-        shortDescription:"Adieu les imperfections ! Solution antifongique puissante pour une peau saine.",
-        detailedSpecs:"Formule apaisante, pénétration rapide, flacon compact. Antifongique certifié.",
-        price:3000,
-        imagePrompt:"Tube médical blanc et bleu, texture crème visible, fond studio épuré",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80"
-      },
-      {
-        id:2, category:"Beauté & Soins",
-        name:"Gamme Éclat Collagen Snail",
-        shortDescription:"Le secret de la jeunesse à la bave d'escargot pour un visage lisse et repulpé.",
-        detailedSpecs:"Hydratation intense, anti-âge, régénérateur cellulaire. Pack complet sérum + crème.",
-        price:12000,
-        imagePrompt:"Pack complet avec sérum et crème bave d'escargot, design premium, fond noir",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&q=80"
-      },
-      {
-        id:3, category:"Beauté & Soins",
-        name:"Coffret Professionnel Vitamine C (N°1 à 5)",
-        shortDescription:"La routine complète pour un teint éclatant et sans taches.",
-        detailedSpecs:"Mousse nettoyante (N1), Tonique sébum (N2), Sérum exfoliant (N3), Crème protectrice (N4). Tons orange vif, reflets dorés.",
-        price:10000,
-        imagePrompt:"5 produits Vitamine C alignés, dominante orange vif, reflets dorés agrumes",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80"
-      },
-      {
-        id:4, category:"Beauté & Soins",
-        name:"Crème Dépilatoire Magic Clean",
-        shortDescription:"Une peau douce en 5 minutes chrono, sans douleur.",
-        detailedSpecs:"Enrichie à l'Aloe Vera et Vitamine E. Convient aux zones sensibles.",
-        price:3000,
-        imagePrompt:"Tube vert et blanc, visuel jambe lisse, fond propre épuré",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&q=80"
-      },
-      {
-        id:5, category:"Beauté & Soins",
-        name:"Pommade Cocoa Butter & Lemon",
-        shortDescription:"Beurre de cacao gourmand pour une peau nourrie et un teint unifié.",
-        detailedSpecs:"Éclaircissant naturel, acide kojique, parfum délicat. Pot jaune/marron, texture onctueuse.",
-        price:3000,
-        imagePrompt:"Pot crème jaune marron, texture onctueuse beurre de cacao, fond bois",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&q=80"
-      },
 
-      // === PARFUMERIE ===
+      // ===== PARFUM =====
       {
-        id:6, category:"Parfumerie",
-        name:"Kiss par Khalil T.",
-        shortDescription:"Une caresse florale et fruitée qui laisse un sillage inoubliable.",
-        detailedSpecs:"Parfum mixte (H/F), tenue longue durée. Flacon élégant, fond floral.",
+        id:1, category:"Parfum", vitc:false,
+        name:"Parfum Kiss",
+        description:"Une fragrance audacieuse et captivante qui laisse un sillage mémorable tout au long de la journée.",
+        details:"Parfum mixte, idéal pour hommes et femmes. Longue tenue.",
         price:2000,
-        imagePrompt:"Flacon de parfum élégant sur fond floral rose et pétales",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1541643600914-78b084683702?w=600&q=80"
+        img:"images/Parfum Kiss.jpg"
       },
       {
-        id:7, category:"Parfumerie",
-        name:"Coffret Camêe 2-en-1",
-        shortDescription:"L'élégance poudrée en duo : Eau de parfum et Déodorant assorti.",
-        detailedSpecs:"50ml + 50ml, notes florales douces. Boîtier duo, design classique.",
+        id:2, category:"Parfum", vitc:false,
+        name:"Parfum 2 en 1",
+        description:"Le duo parfait pour une sensation de fraîcheur continue et une élégance olfactive au quotidien.",
+        details:"Coffret comprenant un parfum de 50 ml et un déodorant spray assorti.",
         price:3000,
-        imagePrompt:"Coffret duo parfum et déodorant, design classique élégant, fond neutre",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=600&q=80"
+        img:"images/Parfum-2-en-1.jpg"
       },
       {
-        id:8, category:"Parfumerie",
-        name:"Collection Mousouf 4-en-1",
-        shortDescription:"Voyagez à travers 4 fragrances orientales d'exception.",
-        detailedSpecs:"Classique (chocolat/raisin), Wardi (rose), Ramadi et Blue. Coffret de 4 mini flacons luxueux.",
+        id:3, category:"Parfum", vitc:false,
+        name:"Parfums mousouf",
+        description:"Un voyage olfactif oriental exceptionnel avec des notes riches et luxueuses.",
+        details:"Coffret 4 en 1 disponible en variantes rose, gris et bleu.",
         price:7000,
-        imagePrompt:"Coffret de 4 mini flacons parfum oriental luxueux, fond doré sombre",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1619994403073-2cec844b8e63?w=600&q=80"
+        img:"images/Parfums-mousouf.jpg"
       },
       {
-        id:9, category:"Parfumerie",
-        name:"Lune d'Été",
-        shortDescription:"Une fragrance légère et estivale, douce comme une nuit étoilée.",
-        detailedSpecs:"Notes florales et musquées. Flacon design, sillage discret et raffiné.",
+        id:4, category:"Parfum", vitc:false,
+        name:"Parfum lune d'Eté",
+        description:"Une senteur solaire et rafraîchissante qui capture l'essence des belles journées d'été.",
+        details:"Coffret 2 en 1 comprenant une eau de parfum de 60 ml et un déodorant spray.",
         price:3000,
-        imagePrompt:"Flacon parfum bleu nuit étoilé, ambiance estivale douce",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1551406483-3731d1997540?w=600&q=80"
+        img:"images/Parfum-lune-d_Eté.jpg"
       },
       {
-        id:10, category:"Parfumerie",
-        name:"Black Market",
-        shortDescription:"Un parfum audacieux et magnétique pour les esprits libres.",
-        detailedSpecs:"Notes boisées, épicées et musquées. Longue tenue. Flacon sombre et luxueux.",
+        id:5, category:"Parfum", vitc:false,
+        name:"Parfum Black Market",
+        description:"Une signature aromatique intense et sophistiquée, conçue pour marquer les esprits.",
+        details:"Eau de toilette aromatique format 100 ml.",
         price:3000,
-        imagePrompt:"Flacon parfum noir brillant, ambiance sombre luxueuse, fond studio",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&q=80"
+        img:"images/Parfum-Black-Market.jpg"
       },
       {
-        id:11, category:"Parfumerie",
+        id:6, category:"Parfum", vitc:false,
         name:"Matelot",
-        shortDescription:"L'aventure marine embouteillée, fraîcheur et caractère.",
-        detailedSpecs:"Notes marines, bergamote et cèdre. Flacon inspiré de la mer, unisexe.",
+        description:"Un sillage marin et dynamique, parfait pour une personnalité affirmée et aventureuse.",
+        details:"Eau de parfum haute concentration.",
         price:8000,
-        imagePrompt:"Flacon parfum bleu marine, notes aquatiques, fond océan",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1567922045116-2a00fae2ed03?w=600&q=80"
+        img:"images/Matelot.jpg"
       },
       {
-        id:12, category:"Parfumerie",
-        name:"Lattafa Rave",
-        shortDescription:"Le raffinement oriental dans toute sa splendeur.",
-        detailedSpecs:"Oud, rose et ambre. Flacon design Lattafa, longévité exceptionnelle.",
+        id:7, category:"Parfum", vitc:false,
+        name:"Lattafa Rave Now",
+        description:"Une composition vibrante et contemporaine, reconnue pour son caractère unique.",
+        details:"Disponible en plusieurs variantes de senteurs.",
         price:8000,
-        imagePrompt:"Flacon Lattafa Rave oriental doré, luxueux, fond arabesque",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=600&q=80"
+        img:"images/Lattafa-Rave-Now.jpg"
       },
       {
-        id:13, category:"Parfumerie",
-        name:"Unique",
-        shortDescription:"Une signature olfactive hors du commun, pour les âmes singulières.",
-        detailedSpecs:"Mélange unique de floral, boisé et épicé. Flacon artisanal exclusif.",
+        id:8, category:"Parfum", vitc:false,
+        name:"Extremely Unique",
+        description:"L'élégance à l'état pur avec une formule conçue pour ceux qui cherchent l'exclusivité.",
+        details:"Eau de parfum format généreux de 100 ml.",
         price:5000,
-        imagePrompt:"Flacon parfum artisanal minimaliste, design exclusif, fond blanc épuré",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=600&q=80"
+        img:"images/Extremely-Unique.jpg"
       },
       {
-        id:14, category:"Parfumerie",
+        id:9, category:"Parfum", vitc:false,
         name:"My Way",
-        shortDescription:"Voyagez, explorez, vivez — un parfum pour les femmes libres.",
-        detailedSpecs:"Notes de fleur d'oranger, bois de santal et musc. Inspiré de l'Armani My Way.",
+        description:"Un bouquet floral lumineux et féminin, invitant à la découverte de soi.",
+        details:"Parfum délicat pour femme, usage quotidien.",
         price:3000,
-        imagePrompt:"Flacon parfum féminin élégant bleu ciel, fond voyage inspiration",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1600428610016-7f8f3999a0a0?w=600&q=80"
+        img:"images/My-Way.jpg"
       },
-
-      // === CHAUSSURES ===
       {
-        id:15, category:"Chaussures",
-        name:"Mules \"Clover Luxe\"",
-        shortDescription:"Le confort rencontre le style pour vos sorties décontractées.",
-        detailedSpecs:"Modèles KA3004/KA3019, semelle effet liège, boucle réglable. Fond neutre, focus sur la boucle.",
+        id:10, category:"Parfum", vitc:false,
+        name:"Parfun BOSS",
+        description:"Un parfum de caractère pour l'homme d'aujourd'hui, intense et raffiné.",
+        details:"Eau de parfum pour homme, longue tenue.",
         price:5000,
-        imagePrompt:"Mules sandales élégantes sur fond neutre, semelle liège, boucle dorée",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80"
+        img:"images/Parfun-BOSS.jpg"
+      },
+
+      // ===== CHAUSSURES =====
+      {
+        id:11, category:"Chaussures", vitc:false,
+        name:"Chaussure modèle KA3004",
+        description:"Des chaussures élégantes alliant design moderne et confort exceptionnel pour toutes vos sorties.",
+        details:"Finition de haute qualité, style habillé. Tailles 37-41, 24 paires.",
+        price:5000,
+        img:"images/Chaussure-modèle-KA3004.jpg"
       },
       {
-        id:16, category:"Chaussures",
-        name:"Baskets Urban Graphik",
-        shortDescription:"Affirmez votre style avec ces sneakers au design futuriste.",
-        detailedSpecs:"Modèle JN62A, semelle crantée, accents orange/fluo. Pointures 40-45. Basket vue profil, éclairage dynamique.",
+        id:12, category:"Chaussures", vitc:false,
+        name:"Chaussure modèle KA3019",
+        description:"Le compromis idéal entre chic et décontracté pour un look impeccable.",
+        details:"Design épuré, semelle confortable. Tailles 37-41, 36 paires.",
+        price:5000,
+        img:"images/Chaussure-modèle-KA3019.jpg"
+      },
+      {
+        id:13, category:"Chaussures", vitc:false,
+        name:"Chaussure modèle KA2999",
+        description:"Affirmez votre style avec ce modèle sophistiqué, conçu pour durer.",
+        details:"Matériaux résistants, coupe classique. Tailles 37-41, 24 paires.",
+        price:5000,
+        img:"images/Chaussure-modèle-KA2999.jpg"
+      },
+      {
+        id:14, category:"Chaussures", vitc:false,
+        name:"Chaussure modèle KA3005",
+        description:"Une ligne élégante qui s'adapte parfaitement à votre garde-robe professionnelle ou de soirée.",
+        details:"Entretien facile, grand confort de marche. Tailles 37-41, 24 paires.",
+        price:5000,
+        img:"images/Chaussure-modèle-KA3005.jpg"
+      },
+      {
+        id:15, category:"Chaussures", vitc:false,
+        name:"Baskets de sport",
+        description:"Alliez performance sportive et allure urbaine avec ces baskets polyvalentes.",
+        details:"Pointures 40 à 45. Disponibles en noir/vert fluo, noir/blanc et noir/orange. 24 paires.",
         price:7000,
-        imagePrompt:"Sneaker futuriste vue profil, accents orange fluo, fond sombre dynamique",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80"
+        img:"images/Baskets-de-sport.jpg"
+      },
+      {
+        id:16, category:"Chaussures", vitc:false,
+        name:"Baskets de sport modèle JN25B",
+        description:"La basket ultra-légère conçue pour maximiser votre dynamisme au quotidien.",
+        details:"Pointures 37 à 42. Disponibles en noir, blanc et rose. 24 paires.",
+        price:5000,
+        img:"images/Baskets-de-sport-modèle-JN25B.jpg"
       },
 
-      // === USTENSILES DE CUISINE ===
+      // ===== ARMOIRE ET ÉTAGÈRE =====
       {
-        id:17, category:"Ustensiles de Cuisine",
-        name:"Verres \"Or Royal\" (Lot de 6)",
-        shortDescription:"Élevez vos réceptions avec ces flûtes à champagne bordées d'or.",
-        detailedSpecs:"Verre haute qualité, liseré doré, 6 pièces. Image montrant les 6 verres alignés avec reflets brillants.",
-        price:8500,
-        imagePrompt:"6 flûtes à champagne alignées avec liseré doré, reflets brillants, fond sombre élégant",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+        id:17, category:"Armoire & Étagère", vitc:false,
+        name:"Étagère de rangement multifonctions 5 niveaux",
+        description:"Une solution de stockage robuste et polyvalente pour organiser parfaitement votre intérieur.",
+        details:"5 plateaux spacieux, structure stable, installation sans outils, roulettes incluses.",
+        price:30000,
+        img:"images/Étagère-de-rangement-multifonctions-5-niveaux.jpg"
       },
       {
-        id:18, category:"Ustensiles de Cuisine",
-        name:"Batterie Antiadhésive Luxe",
-        shortDescription:"Cuisinez comme un chef sans que rien ne colle.",
-        detailedSpecs:"Lot de 4 casseroles de luxe. Revêtement antiadhésif premium, fond en acier inox.",
-        price:25000,
-        imagePrompt:"Set casseroles antiadhésives luxe sur fond cuisine épurée, fond blanc",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1585515320310-259814833e62?w=600&q=80"
-      },
-      {
-        id:19, category:"Ustensiles de Cuisine",
-        name:"Batterie Silver Crest (3 Poêles)",
-        shortDescription:"La qualité Silver Crest pour une cuisine sans effort au quotidien.",
-        detailedSpecs:"3 poêles Silver Crest, revêtement antiadhésif, différentes tailles. Fond cuisine épuré.",
+        id:18, category:"Armoire & Étagère", vitc:false,
+        name:"Etagère de chaussures 6 niveaux",
+        description:"Protégez vos chaussures de la poussière tout en optimisant votre espace de rangement.",
+        details:"Cadre en acier inoxydable, housse de protection, boîtes de rangement anti-poussière. 125x80x28cm.",
         price:10000,
-        imagePrompt:"3 poêles Silver Crest antiadhésives, fond cuisine épuré minimaliste",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&q=80"
+        img:"images/Etagère-de-chaussures-6-niveaux.jpg"
       },
       {
-        id:20, category:"Ustensiles de Cuisine",
-        name:"Distributeur Globe Terrestre",
-        shortDescription:"Servez vos boissons avec originalité grâce à ce globe design.",
-        detailedSpecs:"Capacité 1.5L à 3.5L, robinet intégré, acrylique transparent. Globe rempli d'un liquide ambré sur un bar.",
-        price:10000,
-        imagePrompt:"Globe terrestre distributeur boisson acrylique transparent rempli liquide ambré, fond bar",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1595341888016-a392ef81b7de?w=600&q=80"
+        id:19, category:"Armoire & Étagère", vitc:false,
+        name:"Etagère porte chaussures 8 niveaux",
+        description:"La solution grande capacité pour garder toutes vos paires à portée de main avec élégance.",
+        details:"Acier galvanisé, 8 niveaux, poignée intégrée, hauteur 148cm.",
+        price:7000,
+        img:"images/Etagère_porte_chaussures-8-niveaux.jpg"
       },
-
-      // === ARMOIRE & ÉTAGÈRES ===
       {
-        id:21, category:"Armoire & Étagères",
-        name:"Dressing Textile 2 Battants",
-        shortDescription:"Rangez toute votre garde-robe en un clin d'œil.",
-        detailedSpecs:"Housse anti-poussière, structure acier, 2 battants. Design modulable.",
+        id:20, category:"Armoire & Étagère", vitc:false,
+        name:"Range vêtement",
+        description:"Une armoire en tissu pratique et rapide à monter pour un dressing toujours ordonné.",
+        details:"Armoire de rangement. Disponible en 2 battants (15 000 FCFA) ou 3 battants (20 000 FCFA).",
         price:15000,
-        imagePrompt:"Dressing textile modulable 2 battants, structure acier, fond chambre moderne",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=600&q=80"
+        img:"images/Range-vêtement.jpg"
       },
+
+      // ===== POMMADE & SOINS =====
       {
-        id:22, category:"Armoire & Étagères",
-        name:"Dressing Textile 3 Battants",
-        shortDescription:"La solution ultime pour une grande garde-robe parfaitement organisée.",
-        detailedSpecs:"Housse anti-poussière, structure acier renforcé, 3 battants. Grand volume de rangement.",
-        price:20000,
-        imagePrompt:"Dressing textile 3 battants spacieux, structure acier, fond chambre élégante",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=600&q=80"
-      },
-      {
-        id:23, category:"Armoire & Étagères",
-        name:"Organisateur de Chaussures Yomio",
-        shortDescription:"Fini le désordre ! Protégez vos chaussures avec style.",
-        detailedSpecs:"3 à 8 niveaux, housse de protection, cadre inox. Rangement élégant et pratique.",
+        id:21, category:"Soins Visage & Corps", vitc:true,
+        name:"Gamme de soins du visage à la Vitamine C",
+        description:"Une routine professionnelle luxueuse pour illuminer le teint et traiter les imperfections en profondeur.",
+        details:"Kit 5 en 1 (Facial Wash, Toner, Serum, Face Cream, Eye Cream). Nettoie, régule, exfolie, hydrate.",
         price:10000,
-        imagePrompt:"Organisateur chaussures étagère inox multi-niveaux, fond blanc propre",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&q=80"
+        img:"images/Gamme-de-soins-du-visage-à-la-Vitamine-C.jpg"
+      },
+      {
+        id:22, category:"Soins Visage & Corps", vitc:false,
+        name:"Collagen",
+        description:"Un soin régénérant exceptionnel qui aide la peau à retrouver sa souplesse et sa jeunesse naturelle.",
+        details:"Gamme de visage formulée à base de bave d'escargot. Kit 5 pièces.",
+        price:12000,
+        img:"images/Collagen.jpg"
+      },
+      {
+        id:23, category:"Soins Visage & Corps", vitc:false,
+        name:"Pommade cocoa butter",
+        description:"Nourrissez intensément votre corps tout en unifiant votre teint grâce à cette formule riche.",
+        details:"Crème corporelle enrichie en beurre de cacao, acide kojique et racine de réglisse. Tous types de peau.",
+        price:3000,
+        img:"images/Pommade-cocoa-butter.jpg"
+      },
+      {
+        id:24, category:"Soins Visage & Corps", vitc:false,
+        name:"Creme antifongique Cindynal",
+        description:"Le traitement réparateur efficace pour soulager et assainir la peau rapidement.",
+        details:"Crème hydratante à base d'huile de cheval. Traitement ciblé pour les mains et les pieds.",
+        price:3000,
+        img:"images/Creme-antifongique-Cindynal.jpg"
+      },
+      {
+        id:25, category:"Soins Visage & Corps", vitc:false,
+        name:"Crème dépilatoire",
+        description:"Une épilation douce, rapide et sans douleur, laissant votre peau lisse et apaisée.",
+        details:"Agit en 3 à 5 minutes. Convient aux jambes, bras, aisselles et zones intimes. Variante Aloe Vera disponible.",
+        price:3000,
+        img:"images/Crème-dépilatoire.jpg"
       },
 
-      // === HYGIÈNE & SAVON ===
+      // ===== SAVON ET HYGIÈNE =====
       {
-        id:24, category:"Hygiène & Savon",
-        name:"Savon Blanchissant White Skin",
-        shortDescription:"Un nettoyage profond pour un teint clarifié et sans taches.",
-        detailedSpecs:"Élimine l'excès de sébum, anti-imperfection. Savon délicat pour usage quotidien.",
+        id:26, category:"Savon & Hygiène", vitc:false,
+        name:"white skine",
+        description:"Le nettoyant quotidien parfait pour obtenir un teint clair, uniforme et sans défaut.",
+        details:"Savon de visage blanchissant anti-imperfection. Arbutin + Acide Hyaluronique, 100g.",
         price:2500,
-        imagePrompt:"Savon blanchissant blanc et épuré, fond lumineux studio beauté",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=600&q=80"
+        img:"images/white-skine.jpg"
       },
       {
-        id:25, category:"Hygiène & Savon",
-        name:"Gel Douche Exfoliant Busjung",
-        shortDescription:"Un gommage gourmand sous la douche pour une peau de soie.",
-        detailedSpecs:"Vitamine C & Curcuma, élimine les peaux mortes. Flacon généreux, parfum agrumes.",
-        price:7000,
-        imagePrompt:"Flacon gel douche exfoliant jaune curcuma vitamine C, fond douche épuré",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&q=80"
+        id:27, category:"Savon & Hygiène", vitc:false,
+        name:"Mousse de blanchiment des dents",
+        description:"Retrouvez un sourire éclatant avec cette mousse active, simple et rapide à utiliser.",
+        details:"Lanthome V34 Teeth Whitening Mousse 50ml. Action purifiante et blanchissante. Correction couleur violette.",
+        price:4000,
+        img:"images/Mousse-de-blanchiment-des-dents.jpg"
+      },
+      {
+        id:28, category:"Savon & Hygiène", vitc:false,
+        name:"Protège Brosse à dent et pâte",
+        description:"La solution hygiénique idéale pour transporter vos essentiels dentaires lors de vos déplacements.",
+        details:"Étui de voyage portable compact et robuste. Disponible en 4 coloris.",
+        price:2500,
+        img:"images/Protège-Brosse-à-dent-et-pâte.jpg"
       },
 
-      // === MAISON & HIGH-TECH ===
+      // ===== GEL DE DOUCHE =====
       {
-        id:26, category:"Maison & High-Tech",
-        name:"Bande LED Intelligente RGBIC 10m",
-        shortDescription:"Transformez l'ambiance de votre salon depuis votre smartphone.",
-        detailedSpecs:"10m, contrôle App/Télécommande, synchronisation musique. Compatible Alexa/Google.",
-        price:12000,
-        imagePrompt:"LED strip RGBIC illuminant salon moderne, couleurs vives, fond sombre ambiance",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1558618047-f4e70e5f5547?w=600&q=80"
-      },
-      {
-        id:27, category:"Maison & High-Tech",
-        name:"Bande LED Intelligente RGBIC 5m",
-        shortDescription:"Ambiance lumineuse sur mesure pour votre espace de vie.",
-        detailedSpecs:"5m, contrôle App/Télécommande, synchronisation musique. Couleurs RGBIC multizone.",
-        price:8500,
-        imagePrompt:"LED strip RGBIC 5m, ambiance colorée chambre moderne, fond sombre",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1550985543-49bee3167284?w=600&q=80"
-      },
-      {
-        id:28, category:"Maison & High-Tech",
-        name:"Ring Light Pro 14\"",
-        shortDescription:"L'accessoire indispensable pour des photos et vidéos parfaites.",
-        detailedSpecs:"36cm, lumière multicolore, trépied inclus. Idéal pour créateurs de contenu.",
-        price:8000,
-        imagePrompt:"Ring light 14 pouces blanc sur trépied, fond studio photo élégant",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1631700611307-37dbcb89ef7e?w=600&q=80"
-      },
-      {
-        id:29, category:"Maison & High-Tech",
-        name:"Planche Fitness Premium",
-        shortDescription:"Sculptez votre corps à domicile avec cet équipement polyvalent.",
-        detailedSpecs:"Structure robuste, multifonction, idéale pour abdos, bras et gainage. Pliable et compact.",
-        price:20000,
-        imagePrompt:"Planche fitness multifonction moderne, fond salle de sport épurée",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80"
-      },
-      {
-        id:30, category:"Maison & High-Tech",
-        name:"Tondeuse Professionnelle Daling",
-        shortDescription:"Un coiffeur à domicile pour un look toujours impeccable.",
-        detailedSpecs:"Lames inox auto-affûtantes, 5 sabots inclus, rechargeable USB. Silencieuse et précise.",
-        price:12000,
-        imagePrompt:"Tondeuse professionnelle Daling noire et argent, fond studio propre",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1590439471364-192aa70c0b53?w=600&q=80"
-      },
-      {
-        id:31, category:"Maison & High-Tech",
-        name:"Sèche-Ongles UV",
-        shortDescription:"Un résultat de manucure professionnelle en quelques minutes.",
-        detailedSpecs:"Lampe UV/LED, séchage en 30-60 secondes, compatible gel et vernis UV. Design compact.",
+        id:29, category:"Gel de Douche", vitc:false,
+        name:"Gel de douche",
+        description:"Une expérience revitalisante pour un nettoyage gommant qui laisse la peau incroyablement douce.",
+        details:"4 variantes : Vit C & Curcuma, Lait & Glutathion, Half Cast X7, 24K Gold & Glutathion. 1000ml.",
         price:7000,
-        imagePrompt:"Sèche-ongles UV compact blanc, lumière violette allumée, fond beauté",
-        stockStatus:"Limited",
-        img:"https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80"
+        img:"images/Gel-de-douche.jpg"
+      },
+
+      // ===== USTENSILES DE CUISINE =====
+      {
+        id:30, category:"Ustensiles de Cuisine", vitc:false,
+        name:"Casserole de cuisine",
+        description:"Un équipement premium pour réussir toutes vos cuissons sans que les aliments n'attachent.",
+        details:"Set 8 pièces avec revêtement antiadhésif haute performance. Poignées et boutons dorés.",
+        price:25000,
+        img:"images/Casserole-de-cuisine.jpg"
+      },
+      {
+        id:31, category:"Ustensiles de Cuisine", vitc:false,
+        name:"Casserole",
+        description:"Le set de poêles indispensable pour saisir et griller vos plats à la perfection.",
+        details:"Ensemble de 3 poêles antiadhésives effet granit. Différentes tailles.",
+        price:10000,
+        img:"images/Casserole.jpg"
+      },
+      {
+        id:32, category:"Ustensiles de Cuisine", vitc:false,
+        name:"Balance de cuisine électronique",
+        description:"Ne ratez plus aucune recette grâce à cette balance digitale d'une précision absolue.",
+        details:"Modèle SF-400. Capacité maximale 10 000 g. Écran LCD clair. Fonctions ZERO/TARE/MODE.",
+        price:5000,
+        img:"images/Balance-de-cuisine-électronique.jpg"
+      },
+      {
+        id:33, category:"Ustensiles de Cuisine", vitc:false,
+        name:"Carafe",
+        description:"Sublimez le service de vos boissons rafraîchissantes avec cet ensemble design.",
+        details:"Service complet en verre ambré : carafe + 4 verres. Marque Garbo Glassware.",
+        price:8000,
+        img:"images/Carafe.jpg"
+      },
+      {
+        id:34, category:"Ustensiles de Cuisine", vitc:false,
+        name:"Verre à champagne or",
+        description:"Apportez une touche de luxe et d'élégance inoubliable à toutes vos célébrations.",
+        details:"Lot de 6 flûtes à champagne avec finition dorée raffinée. Livré en boîte cadeau.",
+        price:8500,
+        img:"images/Verre-à-champagne-or.jpg"
+      },
+      {
+        id:35, category:"Ustensiles de Cuisine", vitc:false,
+        name:"Louche en silicone",
+        description:"Équipez votre cuisine avec des ustensiles modernes qui préservent vos revêtements antiadhésifs.",
+        details:"Ensemble complet Kitchenware Set, disponible en 4 coloris (rose, gris, noir, menthe).",
+        price:8500,
+        img:"images/Louche-en-silicone.jpg"
+      },
+      {
+        id:36, category:"Ustensiles de Cuisine", vitc:false,
+        name:"Distributeur de boisson en forme de globe",
+        description:"Servez l'eau, les cocktails ou vos spiritueux avec originalité lors de vos réceptions.",
+        details:"Globe en verre et métal chromé. Capacité 1,5 à 3,5 litres. Robinet pratique intégré.",
+        price:10000,
+        img:"images/Distributeur-de-boisson-en-forme-de-globe.jpg"
+      },
+
+      // ===== MAISON, BIEN-ÊTRE & DIVERS =====
+      {
+        id:37, category:"Maison & High-Tech", vitc:false,
+        name:"Bande LED néon intelligente",
+        description:"Créez des ambiances lumineuses personnalisées au gré de vos envies avec la synchronisation musicale.",
+        details:"Contrôle via App smartphone (Smart Life/Tuya) ou télécommande. RGBIC multizone.",
+        price:8500,
+        img:"images/Bande-LED-néon-intelligente.jpg"
+      },
+      {
+        id:38, category:"Maison & High-Tech", vitc:false,
+        name:"Ring Light LED de 14 pouces",
+        description:"L'éclairage professionnel parfait pour sublimer vos photos et vos créations de contenus vidéos.",
+        details:"Diamètre 36 cm. Trépied 107cm inclus. Disponible en version RGB multicolore ou 2 couleurs.",
+        price:8000,
+        img:"images/Ring-Light-LED-de-14-pouces.jpg"
+      },
+      {
+        id:39, category:"Maison & High-Tech", vitc:false,
+        name:"Rouleau de papier peint 3D",
+        description:"Rénovez murs, plafonds ou meubles instantanément avec cet effet marbré ultra-réaliste.",
+        details:"Rouyi UV Marble Sheet. Motif marbre blanc/gris/or. PVC épais réutilisable. 3m x 1,2m.",
+        price:25000,
+        img:"images/Rouleau-de-papier-peint-3D.jpg"
+      },
+      {
+        id:40, category:"Maison & High-Tech", vitc:false,
+        name:"Planche fitness multifonction",
+        description:"L'équipement complet pour sculpter votre corps et améliorer votre posture à domicile.",
+        details:"Plateforme pilates pliable avec élastiques, curseurs et appuie-mains. Compact et léger.",
+        price:20000,
+        img:"images/Planche-fitness-multifonction.jpg"
+      },
+      {
+        id:41, category:"Maison & High-Tech", vitc:false,
+        name:"Gaine amincissante de type bandage",
+        description:"Sculptez votre taille efficacement et confortablement, un allié de choix après un accouchement.",
+        details:"Bande 4 mètres (5 000 FCFA) ou 5 mètres (7 000 FCFA). Soutien du dos, remodelage taille.",
+        price:5000,
+        img:"images/Gaine-amincissante-de-type-bandage.jpg"
+      },
+      {
+        id:42, category:"Maison & High-Tech", vitc:false,
+        name:"Moustiquaire pliable",
+        description:"Prenez l'air ou dormez en toute sérénité sans vous exposer aux piqûres de moustiques.",
+        details:"Forme rectangulaire, installation sans outil. 2 places (7 500 FCFA) ou 3 places (9 000 FCFA).",
+        price:7500,
+        img:"images/Moustiquaire-pliable.jpg"
+      },
+      {
+        id:43, category:"Maison & High-Tech", vitc:false,
+        name:"Gourde Thermos 500ml",
+        description:"Gardez votre café bien chaud ou votre eau bien fraîche tout au long de la journée.",
+        details:"Acier inoxydable, isolation cuivre/vide. Disponible en plusieurs couleurs.",
+        price:3500,
+        img:"images/Gourde-Thermos-500ml.jpg"
+      },
+      {
+        id:44, category:"Maison & High-Tech", vitc:false,
+        name:"Thermos 1L",
+        description:"Une grande capacité isotherme pour vous accompagner dans toutes vos aventures avec style.",
+        details:"SUS316 Acier inoxydable haute qualité. 4 coloris : bleu marine, noir, rouge, blanc.",
+        price:4000,
+        img:"images/Thermos-1L.jpg"
+      },
+      {
+        id:45, category:"Maison & High-Tech", vitc:false,
+        name:"Gourde thermos",
+        description:"L'accessoire hydratation indispensable, résistant et parfait pour le quotidien.",
+        details:"Bouteille isotherme inox, large ouverture, anse silicone. Plusieurs couleurs disponibles.",
+        price:4000,
+        img:"images/Gourde-thermos.jpg"
+      },
+      {
+        id:46, category:"Maison & High-Tech", vitc:false,
+        name:"Tondeuse rechargeable en acier",
+        description:"Une coupe nette et professionnelle à domicile grâce à cette tondeuse performante.",
+        details:"Marque Daling. Pour cheveux et barbe. 2en1, sans fil, rechargeable, LED display. Design bronze gravé.",
+        price:12000,
+        img:"images/Tondeuse-rechargeable-en-acier.jpg"
+      },
+      {
+        id:47, category:"Maison & High-Tech", vitc:false,
+        name:"Seche ongle électrique",
+        description:"Obtenez une manucure professionnelle en un clin d'œil avec ce séchoir rapide.",
+        details:"SUN X5, 36 LEDs UV/LED, 48W. Sèche tous types de vernis gel. Minuterie digitale.",
+        price:7000,
+        img:"images/Seche-ongle-électrique.jpg"
+      },
+      {
+        id:48, category:"Maison & High-Tech", vitc:false,
+        name:"New Serpillère triangulaire",
+        description:"Nettoyez les moindres recoins sans vous salir les mains grâce à son système ingénieux.",
+        details:"Rotation 360°, manche télescopique, essorage automatique. Utilisable sec et humide.",
+        price:5000,
+        img:"images/New-Serpillère-triangulaire.jpg"
+      },
+      {
+        id:49, category:"Maison & High-Tech", vitc:false,
+        name:"Kit lime pieds",
+        description:"Prenez soin de vos pieds et retrouvez une peau incroyablement douce comme en institut.",
+        details:"Appareil rechargeable USB, 2 vitesses (2200/2600 rpm), LED, 3 têtes interchangeables.",
+        price:10000,
+        img:"images/Kit-lime-pieds.jpg"
+      },
+      {
+        id:50, category:"Maison & High-Tech", vitc:false,
+        name:"Vibromasseur",
+        description:"Détendez vos muscles en profondeur ou profitez d'un moment de bien-être personnel.",
+        details:"Silicone noir, tête flexible, vibrations silencieuses, rechargeable USB. Format baguette.",
+        price:5000,
+        img:"images/Vibromasseur.jpg"
+      },
+      {
+        id:51, category:"Maison & High-Tech", vitc:false,
+        name:"Mini bâton de massage vibro",
+        description:"Un accessoire compact et discret pour soulager les tensions musculaires où que vous soyez.",
+        details:"Silicone, 100% waterproof, USB rechargeable, réglage intensité & fréquence. 202mm.",
+        price:7000,
+        img:"images/Mini-bâton-de-massage-vibro.jpg"
+      },
+      {
+        id:52, category:"Maison & High-Tech", vitc:false,
+        name:"Support pour téléphone",
+        description:"Gardez les mains libres et votre écran toujours visible sur votre bureau ou votre table.",
+        details:"Base ronde lestée, tige télescopique réglable, rotatif. Réel photo disponible.",
+        price:2000,
+        img:"images/Support-pour-téléphone.jpg"
+      },
+      {
+        id:53, category:"Maison & High-Tech", vitc:false,
+        name:"Tapis de sol en caoutchouc",
+        description:"Sécurisez votre entrée et apportez une touche de couleur à votre intérieur.",
+        details:"Forme ovale, motifs fleurs ou inscription Welcome. Multi-coloris. Antidérapant.",
+        price:3000,
+        img:"images/Tapis-de-sol-en-caoutchouc.jpg"
       }
     ];
 
     let cart = [];
     let currentFilter = 'all';
 
-    function openWhatsApp(productName = '') {
-      if (productName) {
-        const msg = encodeURIComponent(`Bonjour ! Je suis intéressé(e) par le produit : *${productName}*. Pouvez-vous me donner plus d'informations ?`);
-        window.open(`https://wa.me/message/U3AUHWUIXGFQC1?text=${msg}`, '_blank');
-      } else {
-        window.open('https://wa.me/message/U3AUHWUIXGFQC1', '_blank');
-      }
+    function openWhatsApp(productName) {
+      const msg = encodeURIComponent(`Bonjour ! Je suis intéressé(e) par : *${productName}*. Pouvez-vous me donner plus d'informations ?`);
+      window.open(`https://wa.me/message/U3AUHWUIXGFQC1?text=${msg}`, '_blank');
     }
 
     function formatPrice(price) {
@@ -514,59 +639,74 @@
     function renderProducts() {
       const grid = document.getElementById('products-grid');
       const filtered = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
-      grid.innerHTML = filtered.map(p => `
-        <div class="product-card rounded-3xl overflow-hidden shadow-md border border-gray-100 cursor-pointer" onclick="showProductModal(${p.id})">
+      grid.innerHTML = filtered.map(p => {
+        const isVitC = p.vitc;
+        const cardClass = isVitC ? 'vitc-card' : '';
+        const badgeClass = isVitC ? 'vitc-badge' : '';
+        const priceClass = isVitC ? 'text-amber-700' : 'text-amber-800';
+        const catColor = isVitC ? 'style="color:var(--orange)"' : 'style="color:var(--gold)"';
+        return `
+        <div class="product-card ${cardClass} rounded-3xl overflow-hidden shadow-md border border-gray-100 cursor-pointer" onclick="showProductModal(${p.id})">
           <div class="relative">
-            <span class="badge-stock"><i class="fa-solid fa-fire-flame-curved mr-1"></i>Stocks Limités</span>
-            <div class="img-wrap h-56 bg-gray-100">
-              <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80'">
+            <span class="badge-stock ${badgeClass}"><i class="fa-solid fa-fire-flame-curved mr-1"></i>Stock Limité</span>
+            <div class="img-wrap h-52 bg-gray-100">
+              <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" loading="lazy"
+                   onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=70'">
             </div>
           </div>
-          <div class="p-5">
-            <span class="text-[10px] uppercase tracking-widest text-[var(--gold)] font-semibold">${p.category}</span>
-            <h3 class="text-lg heading font-bold mt-1 mb-1 leading-tight line-clamp-2">${p.name}</h3>
-            <p class="text-xs text-gray-500 mb-3 line-clamp-2">${p.shortDescription}</p>
-            <p class="text-xl font-bold text-amber-800 mb-4">${formatPrice(p.price)}</p>
+          <div class="p-4">
+            <span class="cat-label text-[10px] uppercase tracking-widest font-semibold" ${catColor}>${p.category}</span>
+            <h3 class="text-base heading font-bold mt-1 mb-1 leading-tight line-clamp-2">${p.name}</h3>
+            <p class="text-xs text-gray-500 mb-3 line-clamp-2">${p.description}</p>
+            <p class="price text-lg font-bold ${priceClass} mb-3">${formatPrice(p.price)}</p>
             <div class="flex gap-2">
-              <button onclick="addToCart(${p.id}); event.stopPropagation()" class="flex-1 bg-[var(--dark)] text-white py-2.5 rounded-xl text-xs font-semibold hover:bg-gray-800 transition-colors">
+              <button onclick="addToCart(${p.id}); event.stopPropagation()"
+                      class="flex-1 py-2 rounded-xl text-xs font-semibold transition-colors text-white"
+                      style="background:var(--dark)">
                 <i class="fa-solid fa-cart-plus mr-1"></i>Panier
               </button>
-              <button onclick="openWhatsApp('${p.name.replace(/'/g,"\\'")}'); event.stopPropagation()" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 transition-colors">
+              <button onclick="openWhatsApp('${p.name.replace(/'/g,"\\'")}'); event.stopPropagation()"
+                      class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 transition-colors">
                 <i class="fa-brands fa-whatsapp text-sm"></i>Commander
               </button>
             </div>
           </div>
-        </div>
-      `).join('');
+        </div>`;
+      }).join('');
     }
 
     function showProductModal(id) {
       const p = products.find(x => x.id === id);
+      const isVitC = p.vitc;
+      const accentColor = isVitC ? 'var(--orange)' : 'var(--gold)';
       document.getElementById('modal-content').innerHTML = `
-        <div class="relative mb-6">
-          <span style="background:linear-gradient(135deg,#e53e3e,#c53030);color:#fff;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;font-weight:700;display:inline-block;margin-bottom:12px;">
-            <i class="fa-solid fa-fire-flame-curved mr-1"></i>Stocks Limités
+        <div class="relative mb-4">
+          <span style="background:linear-gradient(135deg,#e53e3e,#c53030);color:#fff;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;padding:4px 12px;border-radius:20px;font-weight:700;display:inline-block;">
+            <i class="fa-solid fa-fire-flame-curved mr-1"></i>Stock Limité
           </span>
           <button onclick="closeModal()" class="absolute top-0 right-0 text-3xl text-gray-400 hover:text-gray-700 transition-colors leading-none">&times;</button>
         </div>
-        <div class="rounded-2xl overflow-hidden h-72 mb-6 bg-gray-100">
-          <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80'">
+        <div class="rounded-2xl overflow-hidden h-64 mb-5 bg-gray-100">
+          <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover"
+               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80'">
         </div>
-        <span class="text-xs uppercase tracking-widest text-[var(--gold)] font-semibold">${p.category}</span>
+        <span class="text-xs uppercase tracking-widest font-semibold" style="color:${accentColor}">${p.category}</span>
         <h2 class="text-3xl heading font-bold mt-1 mb-2">${p.name}</h2>
         <p class="text-2xl font-bold text-amber-800 mb-4">${formatPrice(p.price)}</p>
         <div class="gold-line mb-4"></div>
-        <p class="text-gray-600 mb-3 leading-relaxed">${p.shortDescription}</p>
-        <p class="text-sm text-gray-500 leading-relaxed bg-amber-50 rounded-xl p-4 mb-6">${p.detailedSpecs}</p>
+        <p class="text-gray-600 mb-3 leading-relaxed">${p.description}</p>
+        <p class="text-sm text-gray-500 leading-relaxed rounded-xl p-4 mb-5" style="background:${isVitC ? '#fff7ed' : '#fffbeb'}">${p.details}</p>
         <div class="flex gap-3">
-          <button onclick="addToCart(${p.id}); closeModal()" class="flex-1 bg-[var(--dark)] text-white py-4 rounded-2xl font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+          <button onclick="addToCart(${p.id}); closeModal()"
+                  class="flex-1 text-white py-4 rounded-2xl font-semibold transition-colors flex items-center justify-center gap-2"
+                  style="background:var(--dark)">
             <i class="fa-solid fa-cart-plus"></i> Ajouter au panier
           </button>
-          <button onclick="openWhatsApp('${p.name.replace(/'/g,"\\'")}'); closeModal()" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 transition-colors shadow-lg">
+          <button onclick="openWhatsApp('${p.name.replace(/'/g,"\\'")}'); closeModal()"
+                  class="flex-1 bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 transition-colors shadow-lg">
             <i class="fa-brands fa-whatsapp text-xl"></i> Commander
           </button>
-        </div>
-      `;
+        </div>`;
       document.getElementById('product-modal').classList.remove('hidden');
       document.body.style.overflow = 'hidden';
     }
@@ -577,14 +717,10 @@
     }
 
     const categoryIcons = {
-      'all': 'fa-grid-2',
-      'Beauté & Soins': 'fa-star',
-      'Parfumerie': 'fa-bottle-droplet',
-      'Chaussures': 'fa-shoe-prints',
-      'Ustensiles de Cuisine': 'fa-utensils',
-      'Armoire & Étagères': 'fa-box-open',
-      'Hygiène & Savon': 'fa-soap',
-      'Maison & High-Tech': 'fa-bolt'
+      'all':'fa-grid-2','Parfum':'fa-bottle-droplet','Chaussures':'fa-shoe-prints',
+      'Armoire & Étagère':'fa-box-open','Soins Visage & Corps':'fa-star',
+      'Savon & Hygiène':'fa-soap','Gel de Douche':'fa-droplet',
+      'Ustensiles de Cuisine':'fa-utensils','Maison & High-Tech':'fa-bolt'
     };
 
     function createFilters() {
@@ -594,12 +730,9 @@
         const icon = categoryIcons[cat] || 'fa-tag';
         const label = cat === 'all' ? 'Tout voir' : cat;
         const isActive = currentFilter === cat;
-        return `
-          <button onclick="filterCategory('${cat}')"
-                  class="cat-btn ${isActive ? 'active' : 'bg-white text-gray-700'} px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 shadow-sm">
-            <i class="fa-solid ${icon} text-xs"></i> ${label}
-          </button>
-        `;
+        return `<button onclick="filterCategory('${cat}')"
+          class="cat-btn ${isActive ? 'active' : 'bg-white text-gray-700'} px-5 py-2.5 rounded-full text-sm font-medium flex items-center gap-2 shadow-sm">
+          <i class="fa-solid ${icon} text-xs"></i>${label}</button>`;
       }).join('');
     }
 
@@ -621,54 +754,46 @@
 
     function showToast(msg) {
       const t = document.createElement('div');
-      t.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-[var(--dark)] text-white px-6 py-3 rounded-full shadow-2xl text-sm font-medium z-[999] transition-all';
+      t.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 text-white px-6 py-3 rounded-full shadow-2xl text-sm font-medium z-[999]';
+      t.style.background = 'var(--dark)';
       t.textContent = msg;
       document.body.appendChild(t);
       setTimeout(() => t.remove(), 2500);
     }
 
     function updateCartCount() {
-      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-      document.getElementById('cart-count').textContent = count;
+      document.getElementById('cart-count').textContent = cart.reduce((s, i) => s + i.quantity, 0);
     }
 
     function renderCart() {
-      const itemsContainer = document.getElementById('cart-items');
+      const itemsEl = document.getElementById('cart-items');
       const totalEl = document.getElementById('cart-total');
-      itemsContainer.innerHTML = cart.length === 0
+      itemsEl.innerHTML = cart.length === 0
         ? '<p class="text-center text-gray-400 py-12 text-sm">Votre panier est vide</p>'
         : cart.map(item => `
           <div class="flex gap-4 mb-5 pb-5 border-b border-gray-100 last:border-0">
-            <img src="${item.img}" class="w-16 h-16 object-cover rounded-xl" onerror="this.src='https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=200&q=80'">
+            <img src="${item.img}" class="w-16 h-16 object-cover rounded-xl"
+                 onerror="this.src='https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=200&q=80'">
             <div class="flex-1">
               <p class="font-semibold text-sm leading-tight">${item.name}</p>
               <p class="text-xs text-gray-400 mt-0.5">${formatPrice(item.price)} × ${item.quantity}</p>
               <div class="flex items-center gap-3 mt-2">
-                <button onclick="changeQuantity(${item.id}, -1)" class="w-7 h-7 rounded-full border border-gray-200 text-gray-600 hover:border-red-400 hover:text-red-500 transition-colors text-sm flex items-center justify-center">−</button>
+                <button onclick="changeQuantity(${item.id},-1)" class="w-7 h-7 rounded-full border border-gray-200 text-gray-600 hover:border-red-400 hover:text-red-500 transition-colors text-sm flex items-center justify-center">−</button>
                 <span class="font-bold text-sm">${item.quantity}</span>
-                <button onclick="changeQuantity(${item.id}, 1)" class="w-7 h-7 rounded-full border border-gray-200 text-gray-600 hover:border-green-400 hover:text-green-500 transition-colors text-sm flex items-center justify-center">+</button>
+                <button onclick="changeQuantity(${item.id},1)" class="w-7 h-7 rounded-full border border-gray-200 text-gray-600 hover:border-green-400 hover:text-green-500 transition-colors text-sm flex items-center justify-center">+</button>
               </div>
             </div>
             <div class="font-bold text-sm text-amber-800">${formatPrice(item.price * item.quantity)}</div>
-          </div>
-        `).join('');
-
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-      totalEl.textContent = formatPrice(total);
+          </div>`).join('');
+      totalEl.textContent = formatPrice(cart.reduce((s, i) => s + i.price * i.quantity, 0));
     }
 
     let cartOpen = false;
     function toggleCart() {
       const modal = document.getElementById('cart-modal');
       cartOpen = !cartOpen;
-      if (cartOpen) {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        renderCart();
-      } else {
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
+      if (cartOpen) { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; renderCart(); }
+      else { modal.classList.add('hidden'); document.body.style.overflow = ''; }
     }
 
     function changeQuantity(id, change) {
@@ -681,21 +806,15 @@
     }
 
     function checkout() {
-      if (cart.length === 0) return;
-      const lines = cart.map(item => `• ${item.name} × ${item.quantity} = ${formatPrice(item.price * item.quantity)}`).join('\n');
-      const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      if (!cart.length) return;
+      const lines = cart.map(i => `• ${i.name} × ${i.quantity} = ${formatPrice(i.price * i.quantity)}`).join('\n');
+      const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
       const msg = encodeURIComponent(`Bonjour ! Je souhaite commander :\n\n${lines}\n\n*Total : ${formatPrice(total)}*\n\nMerci de confirmer ma commande 🙏`);
       window.open(`https://wa.me/message/U3AUHWUIXGFQC1?text=${msg}`, '_blank');
-      cart = [];
-      updateCartCount();
-      toggleCart();
+      cart = []; updateCartCount(); toggleCart();
     }
 
-    window.onload = () => {
-      createFilters();
-      renderProducts();
-      updateCartCount();
-    };
+    window.onload = () => { createFilters(); renderProducts(); updateCartCount(); };
   </script>
 </body>
 </html>

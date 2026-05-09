@@ -95,7 +95,7 @@
           <i class="fa-solid fa-cart-shopping"></i>
           <span id="cart-count" class="absolute -top-0 -right-0 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
         </button>
-        <a href="https://wa.me/message/U3AUHWUIXGFQC1" target="_blank"
+        <a href="https://wa.me/22956967812" target="_blank"
            class="whatsapp-float bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-full flex items-center gap-2 shadow-lg text-sm font-semibold transition-colors">
           <i class="fa-brands fa-whatsapp text-lg"></i>
           <span class="hidden sm:inline">Commander</span>
@@ -108,7 +108,7 @@
   <header class="hero-bg min-h-screen flex items-center text-white relative overflow-hidden">
     <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23c9a84c\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
     <div class="max-w-5xl mx-auto text-center px-6 relative z-10">
-      <p style="color:var(--gold-light)" class="text-xs tracking-[0.35em] uppercase mb-6 font-medium">Collection Exclusive 2026</p>
+      <p style="color:var(--gold-light)" class="text-xs tracking-[0.35em] uppercase mb-6 font-medium">Collection Exclusive</p>
       <h2 class="text-6xl md:text-8xl heading font-bold leading-tight mb-6">Élégance<br/><em style="color:var(--gold)">au quotidien</em></h2>
       <div class="gold-line w-32 mx-auto mb-8"></div>
       <p class="text-lg md:text-xl text-gray-300 mb-10 font-light tracking-wide">Parfums · Beauté · Chaussures · Maison · Cuisine · High-Tech</p>
@@ -181,461 +181,95 @@
   </div>
 
   <script>
-    const products = [
+    const WA_NUMBER = "22956967812";
 
+    const products = [
       // ===== PARFUM =====
-      {
-        id:1, category:"Parfum", vitc:false,
-        name:"Parfum Kiss",
-        description:"Une fragrance audacieuse et captivante qui laisse un sillage mémorable tout au long de la journée.",
-        details:"Parfum mixte, idéal pour hommes et femmes. Longue tenue.",
-        price:2000,
-        img:"images/Parfum-Kiss.jpg"
-      },
-      {
-        id:2, category:"Parfum", vitc:false,
-        name:"Parfum 2 en 1",
-        description:"Le duo parfait pour une sensation de fraîcheur continue et une élégance olfactive au quotidien.",
-        details:"Coffret comprenant un parfum de 50 ml et un déodorant spray assorti.",
-        price:3000,
-        img:"images/Parfum-2-en-1.jpg"
-      },
-      {
-        id:3, category:"Parfum", vitc:false,
-        name:"Parfums mousouf",
-        description:"Un voyage olfactif oriental exceptionnel avec des notes riches et luxueuses.",
-        details:"Coffret 4 en 1 disponible en variantes rose, gris et bleu.",
-        price:7000,
-        img:"images/Parfums-mousouf.jpg"
-      },
-      {
-        id:4, category:"Parfum", vitc:false,
-        name:"Parfum lune d'Eté",
-        description:"Une senteur solaire et rafraîchissante qui capture l'essence des belles journées d'été.",
-        details:"Coffret 2 en 1 comprenant une eau de parfum de 60 ml et un déodorant spray.",
-        price:3000,
-        img:"images/Parfum-lune-d_Eté.jpg"
-      },
-      {
-        id:5, category:"Parfum", vitc:false,
-        name:"Parfum Black Market",
-        description:"Une signature aromatique intense et sophistiquée, conçue pour marquer les esprits.",
-        details:"Eau de toilette aromatique format 100 ml.",
-        price:3000,
-        img:"images/Parfum-Black-Market.jpg"
-      },
-      {
-        id:6, category:"Parfum", vitc:false,
-        name:"Matelot",
-        description:"Un sillage marin et dynamique, parfait pour une personnalité affirmée et aventureuse.",
-        details:"Eau de parfum haute concentration.",
-        price:8000,
-        img:"images/Matelot.jpg"
-      },
-      {
-        id:7, category:"Parfum", vitc:false,
-        name:"Lattafa Rave Now",
-        description:"Une composition vibrante et contemporaine, reconnue pour son caractère unique.",
-        details:"Disponible en plusieurs variantes de senteurs.",
-        price:8000,
-        img:"images/Lattafa-Rave-Now.jpg"
-      },
-      {
-        id:8, category:"Parfum", vitc:false,
-        name:"Extremely Unique",
-        description:"L'élégance à l'état pur avec une formule conçue pour ceux qui cherchent l'exclusivité.",
-        details:"Eau de parfum format généreux de 100 ml.",
-        price:5000,
-        img:"images/Extremely-Unique.jpg"
-      },
-      {
-        id:9, category:"Parfum", vitc:false,
-        name:"My Way",
-        description:"Un bouquet floral lumineux et féminin, invitant à la découverte de soi.",
-        details:"Parfum délicat pour femme, usage quotidien.",
-        price:3000,
-        img:"images/My-Way.jpg"
-      },
-      {
-        id:10, category:"Parfum", vitc:false,
-        name:"Parfun BOSS",
-        description:"Un parfum de caractère pour l'homme d'aujourd'hui, intense et raffiné.",
-        details:"Eau de parfum pour homme, longue tenue.",
-        price:2000,
-        img:"images/Parfun-BOSS.jpg"
-      },
+      { id:1, category:"Parfum", vitc:false, name:"Parfum Kiss", description:"Une fragrance audacieuse et captivante qui laisse un sillage mémorable tout au long de la journée.", details:"Parfum mixte, idéal pour hommes et femmes. Longue tenue.", price:2000, img:"images/Parfum-Kiss.jpg" },
+      { id:2, category:"Parfum", vitc:false, name:"Parfum 2 en 1", description:"Le duo parfait pour une sensation de fraîcheur continue et une élégance olfactive au quotidien.", details:"Coffret comprenant un parfum de 50 ml et un déodorant spray assorti.", price:3000, img:"images/Parfum-2-en-1.jpg" },
+      { id:3, category:"Parfum", vitc:false, name:"Parfums mousouf", description:"Un voyage olfactif oriental exceptionnel avec des notes riches et luxueuses.", details:"Coffret 4 en 1 disponible en variantes rose, gris et bleu.", price:7000, img:"images/Parfums-mousouf.jpg" },
+      { id:4, category:"Parfum", vitc:false, name:"Parfum lune d'Eté", description:"Une senteur solaire et rafraîchissante qui capture l'essence des belles journées d'été.", details:"Coffret 2 en 1 comprenant une eau de parfum de 60 ml et un déodorant spray.", price:3000, img:"images/Parfum-lune-d_Eté.jpg" },
+      { id:5, category:"Parfum", vitc:false, name:"Parfum Black Market", description:"Une signature aromatique intense et sophistiquée, conçue pour marquer les esprits.", details:"Eau de toilette aromatique format 100 ml.", price:3000, img:"images/Parfum-Black-Market.jpg" },
+      { id:6, category:"Parfum", vitc:false, name:"Matelot", description:"Un sillage marin et dynamique, parfait pour une personnalité affirmée et aventureuse.", details:"Eau de parfum haute concentration.", price:8000, img:"images/Matelot.jpg" },
+      { id:7, category:"Parfum", vitc:false, name:"Lattafa Rave Now", description:"Une composition vibrante et contemporaine, reconnue pour son caractère unique.", details:"Disponible en plusieurs variantes de senteurs.", price:8000, img:"images/Lattafa-Rave-Now.jpg" },
+      { id:8, category:"Parfum", vitc:false, name:"Extremely Unique", description:"L'élégance à l'état pur avec une formule conçue pour ceux qui cherchent l'exclusivité.", details:"Eau de parfum format généreux de 100 ml.", price:5000, img:"images/Extremely-Unique.jpg" },
+      { id:9, category:"Parfum", vitc:false, name:"My Way", description:"Un bouquet floral lumineux et féminin, invitant à la découverte de soi.", details:"Parfum délicat pour femme, usage quotidien.", price:3000, img:"images/My-Way.jpg" },
+      { id:10, category:"Parfum", vitc:false, name:"Parfun BOSS", description:"Un parfum de caractère pour l'homme d'aujourd'hui, intense et raffiné.", details:"Eau de parfum pour homme, longue tenue.", price:2000, img:"images/Parfun-BOSS.jpg" },
 
       // ===== CHAUSSURES =====
-      {
-        id:11, category:"Chaussures", vitc:false,
-        name:"Chaussure modèle KA3004",
-        description:"Des chaussures élégantes alliant design moderne et confort exceptionnel pour toutes vos sorties.",
-        details:"Finition de haute qualité, style habillé. Tailles 37-41, 24 paires.",
-        price:5000,
-        img:"images/Chaussure-modèle-KA3004.jpg"
-      },
-      {
-        id:12, category:"Chaussures", vitc:false,
-        name:"Chaussure modèle KA3019",
-        description:"Le compromis idéal entre chic et décontracté pour un look impeccable.",
-        details:"Design épuré, semelle confortable. Tailles 37-41, 36 paires.",
-        price:5000,
-        img:"images/Chaussure-modèle-KA3019.jpg"
-      },
-      {
-        id:13, category:"Chaussures", vitc:false,
-        name:"Chaussure modèle KA2999",
-        description:"Affirmez votre style avec ce modèle sophistiqué, conçu pour durer.",
-        details:"Matériaux résistants, coupe classique. Tailles 37-41, 24 paires.",
-        price:5000,
-        img:"images/Chaussure-modèle-KA2999.jpg"
-      },
-      {
-        id:14, category:"Chaussures", vitc:false,
-        name:"Chaussure modèle KA3005",
-        description:"Une ligne élégante qui s'adapte parfaitement à votre garde-robe professionnelle ou de soirée.",
-        details:"Entretien facile, grand confort de marche. Tailles 37-41, 24 paires.",
-        price:5000,
-        img:"images/Chaussure-modèle-KA3005.jpg"
-      },
-      {
-        id:15, category:"Chaussures", vitc:false,
-        name:"Baskets de sport",
-        description:"Alliez performance sportive et allure urbaine avec ces baskets polyvalentes.",
-        details:"Pointures 40 à 45. Disponibles en noir/vert fluo, noir/blanc et noir/orange. 24 paires.",
-        price:7000,
-        img:"images/Baskets-de-sport.jpg"
-      },
-      {
-        id:16, category:"Chaussures", vitc:false,
-        name:"Baskets de sport modèle JN25B",
-        description:"La basket ultra-légère conçue pour maximiser votre dynamisme au quotidien.",
-        details:"Pointures 37 à 42. Disponibles en noir, blanc et rose. 24 paires.",
-        price:5000,
-        img:"images/Baskets-de-sport-modèle-JN25B.jpg"
-      },
+      { id:11, category:"Chaussures", vitc:false, name:"Chaussure modèle KA3004", description:"Des chaussures élégantes alliant design moderne et confort exceptionnel pour toutes vos sorties.", details:"Finition de haute qualité, style habillé. Tailles 37-41, 24 paires.", price:5000, img:"images/Chaussure-modèle-KA3004.jpg" },
+      { id:12, category:"Chaussures", vitc:false, name:"Chaussure modèle KA3019", description:"Le compromis idéal entre chic et décontracté pour un look impeccable.", details:"Design épuré, semelle confortable. Tailles 37-41, 36 paires.", price:5000, img:"images/Chaussure-modèle-KA3019.jpg" },
+      { id:13, category:"Chaussures", vitc:false, name:"Chaussure modèle KA2999", description:"Affirmez votre style avec ce modèle sophistiqué, conçu pour durer.", details:"Matériaux résistants, coupe classique. Tailles 37-41, 24 paires.", price:5000, img:"images/Chaussure-modèle-KA2999.jpg" },
+      { id:14, category:"Chaussures", vitc:false, name:"Chaussure modèle KA3005", description:"Une ligne élégante qui s'adapte parfaitement à votre garde-robe professionnelle ou de soirée.", details:"Entretien facile, grand confort de marche. Tailles 37-41, 24 paires.", price:5000, img:"images/Chaussure-modèle-KA3005.jpg" },
+      { id:15, category:"Chaussures", vitc:false, name:"Baskets de sport", description:"Alliez performance sportive et allure urbaine avec ces baskets polyvalentes.", details:"Pointures 40 à 45. Disponibles en noir/vert fluo, noir/blanc et noir/orange. 24 paires.", price:7000, img:"images/Baskets-de-sport.jpg" },
+      { id:16, category:"Chaussures", vitc:false, name:"Baskets de sport modèle JN25B", description:"La basket ultra-légère conçue pour maximiser votre dynamisme au quotidien.", details:"Pointures 37 à 42. Disponibles en noir, blanc et rose. 24 paires.", price:5000, img:"images/Baskets-de-sport-modèle-JN25B.jpg" },
 
-      // ===== ARMOIRE ET ÉTAGÈRE =====
-      {
-        id:17, category:"Armoire & Étagère", vitc:false,
-        name:"Étagère de rangement multifonctions 5 niveaux",
-        description:"Une solution de stockage robuste et polyvalente pour organiser parfaitement votre intérieur.",
-        details:"5 plateaux spacieux, structure stable, installation sans outils, roulettes incluses.",
-        price:30000,
-        img:"images/Étagère-de-rangement-multifonctions-5-niveaux.jpg"
-      },
-      {
-        id:18, category:"Armoire & Étagère", vitc:false,
-        name:"Etagère de chaussures 6 niveaux",
-        description:"Protégez vos chaussures de la poussière tout en optimisant votre espace de rangement.",
-        details:"Cadre en acier inoxydable, housse de protection, boîtes de rangement anti-poussière. 125x80x28cm.",
-        price:10000,
-        img:"images/Etagère-de-chaussures-6-niveaux.jpg"
-      },
-      {
-        id:19, category:"Armoire & Étagère", vitc:false,
-        name:"Etagère porte chaussures 8 niveaux",
-        description:"La solution grande capacité pour garder toutes vos paires à portée de main avec élégance.",
-        details:"Acier galvanisé, 8 niveaux, poignée intégrée, hauteur 148cm.",
-        price:7000,
-        img:"images/Etagère_porte_chaussures-8-niveaux.jpg"
-      },
-      {
-        id:20, category:"Armoire & Étagère", vitc:false,
-        name:"Range vêtement",
-        description:"Une armoire en tissu pratique et rapide à monter pour un dressing toujours ordonné.",
-        details:"Armoire de rangement. Disponible en 2 battants (15 000 FCFA) ou 3 battants (20 000 FCFA).",
-        price:15000,
-        img:"images/Range-vêtement.jpg"
-      },
+      // ===== ARMOIRE & ÉTAGÈRE =====
+      { id:17, category:"Armoire & Étagère", vitc:false, name:"Étagère de rangement multifonctions 5 niveaux", description:"Une solution de stockage robuste et polyvalente pour organiser parfaitement votre intérieur.", details:"5 plateaux spacieux, structure stable, installation sans outils, roulettes incluses.", price:30000, img:"images/Étagère-de-rangement-multifonctions-5-niveaux.jpg" },
+      { id:18, category:"Armoire & Étagère", vitc:false, name:"Etagère de chaussures 6 niveaux", description:"Protégez vos chaussures de la poussière tout en optimisant votre espace de rangement.", details:"Cadre en acier inoxydable, housse de protection, boîtes de rangement anti-poussière. 125x80x28cm.", price:10000, img:"images/Etagère-de-chaussures-6-niveaux.jpg" },
+      { id:19, category:"Armoire & Étagère", vitc:false, name:"Etagère porte chaussures 8 niveaux", description:"La solution grande capacité pour garder toutes vos paires à portée de main avec élégance.", details:"Acier galvanisé, 8 niveaux, poignée intégrée, hauteur 148cm.", price:7000, img:"images/Etagère_porte_chaussures-8-niveaux.jpg" },
+      { id:20, category:"Armoire & Étagère", vitc:false, name:"Range vêtement", description:"Une armoire en tissu pratique et rapide à monter pour un dressing toujours ordonné.", details:"Armoire de rangement. Disponible en 2 battants (15 000 FCFA) ou 3 battants (20 000 FCFA).", price:15000, img:"images/Range-vêtement.jpg" },
 
-      // ===== POMMADE & SOINS =====
-      {
-        id:21, category:"Soins Visage & Corps", vitc:true,
-        name:"Gamme de soins du visage à la Vitamine C",
-        description:"Une routine professionnelle luxueuse pour illuminer le teint et traiter les imperfections en profondeur.",
-        details:"Kit 5 en 1 (Facial Wash, Toner, Serum, Face Cream, Eye Cream). Nettoie, régule, exfolie, hydrate.",
-        price:10000,
-        img:"images/Gamme-de-soins-du-visage-à-la-Vitamine-C.jpg"
-      },
-      {
-        id:22, category:"Soins Visage & Corps", vitc:false,
-        name:"Collagen",
-        description:"Un soin régénérant exceptionnel qui aide la peau à retrouver sa souplesse et sa jeunesse naturelle.",
-        details:"Gamme de visage formulée à base de bave d'escargot. Kit 5 pièces.",
-        price:12000,
-        img:"images/Collagen.jpg"
-      },
-      {
-        id:23, category:"Soins Visage & Corps", vitc:false,
-        name:"Pommade cocoa butter",
-        description:"Nourrissez intensément votre corps tout en unifiant votre teint grâce à cette formule riche.",
-        details:"Crème corporelle enrichie en beurre de cacao, acide kojique et racine de réglisse. Tous types de peau.",
-        price:3000,
-        img:"images/Pommade-cocoa-butter.jpg"
-      },
-      {
-        id:24, category:"Soins Visage & Corps", vitc:false,
-        name:"Creme antifongique Cindynal",
-        description:"Le traitement réparateur efficace pour soulager et assainir la peau rapidement.",
-        details:"Crème hydratante à base d'huile de cheval. Traitement ciblé pour les mains et les pieds.",
-        price:3000,
-        img:"images/Creme-antifongique-Cindynal.jpg"
-      },
-      {
-        id:25, category:"Soins Visage & Corps", vitc:false,
-        name:"Crème dépilatoire",
-        description:"Une épilation douce, rapide et sans douleur, laissant votre peau lisse et apaisée.",
-        details:"Agit en 3 à 5 minutes. Convient aux jambes, bras, aisselles et zones intimes. Variante Aloe Vera disponible.",
-        price:3000,
-        img:"images/Crème-dépilatoire.jpg"
-      },
+      // ===== SOINS =====
+      { id:21, category:"Soins Visage & Corps", vitc:true, name:"Gamme de soins du visage à la Vitamine C", description:"Une routine professionnelle luxueuse pour illuminer le teint et traiter les imperfections en profondeur.", details:"Kit 5 en 1 (Facial Wash, Toner, Serum, Face Cream, Eye Cream). Nettoie, régule, exfolie, hydrate.", price:10000, img:"images/Gamme-de-soins-du-visage-à-la-Vitamine-C.jpg" },
+      { id:22, category:"Soins Visage & Corps", vitc:false, name:"Collagen", description:"Un soin régénérant exceptionnel qui aide la peau à retrouver sa souplesse et sa jeunesse naturelle.", details:"Gamme de visage formulée à base de bave d'escargot. Kit 5 pièces.", price:12000, img:"images/Collagen.jpg" },
+      { id:23, category:"Soins Visage & Corps", vitc:false, name:"Pommade cocoa butter", description:"Nourrissez intensément votre corps tout en unifiant votre teint grâce à cette formule riche.", details:"Crème corporelle enrichie en beurre de cacao, acide kojique et racine de réglisse. Tous types de peau.", price:3000, img:"images/Pommade-cocoa-butter.jpg" },
+      { id:24, category:"Soins Visage & Corps", vitc:false, name:"Creme antifongique Cindynal", description:"Le traitement réparateur efficace pour soulager et assainir la peau rapidement.", details:"Crème hydratante à base d'huile de cheval. Traitement ciblé pour les mains et les pieds.", price:3000, img:"images/Creme-antifongique-Cindynal.jpg" },
+      { id:25, category:"Soins Visage & Corps", vitc:false, name:"Crème dépilatoire", description:"Une épilation douce, rapide et sans douleur, laissant votre peau lisse et apaisée.", details:"Agit en 3 à 5 minutes. Convient aux jambes, bras, aisselles et zones intimes. Variante Aloe Vera disponible.", price:3000, img:"images/Crème-dépilatoire.jpg" },
 
-      // ===== SAVON ET HYGIÈNE =====
-      {
-        id:26, category:"Savon & Hygiène", vitc:false,
-        name:"white skine",
-        description:"Le nettoyant quotidien parfait pour obtenir un teint clair, uniforme et sans défaut.",
-        details:"Savon de visage blanchissant anti-imperfection. Arbutin + Acide Hyaluronique, 100g.",
-        price:2500,
-        img:"images/white-skine.jpg"
-      },
-      {
-        id:27, category:"Savon & Hygiène", vitc:false,
-        name:"Mousse de blanchiment des dents",
-        description:"Retrouvez un sourire éclatant avec cette mousse active, simple et rapide à utiliser.",
-        details:"Lanthome V34 Teeth Whitening Mousse 50ml. Action purifiante et blanchissante. Correction couleur violette.",
-        price:4000,
-        img:"images/Mousse-de-blanchiment-des-dents.jpg"
-      },
-      {
-        id:28, category:"Savon & Hygiène", vitc:false,
-        name:"Protège Brosse à dent et pâte",
-        description:"La solution hygiénique idéale pour transporter vos essentiels dentaires lors de vos déplacements.",
-        details:"Étui de voyage portable compact et robuste. Disponible en 4 coloris.",
-        price:2500,
-        img:"images/Protège-Brosse-à-dent-et-pâte.jpg"
-      },
+      // ===== SAVON & HYGIÈNE =====
+      { id:26, category:"Savon & Hygiène", vitc:false, name:"white skine", description:"Le nettoyant quotidien parfait pour obtenir un teint clair, uniforme et sans défaut.", details:"Savon de visage blanchissant anti-imperfection. Arbutin + Acide Hyaluronique, 100g.", price:2500, img:"images/white-skine.jpg" },
+      { id:27, category:"Savon & Hygiène", vitc:false, name:"Mousse de blanchiment des dents", description:"Retrouvez un sourire éclatant avec cette mousse active, simple et rapide à utiliser.", details:"Lanthome V34 Teeth Whitening Mousse 50ml. Action purifiante et blanchissante. Correction couleur violette.", price:4000, img:"images/Mousse-de-blanchiment-des-dents.jpg" },
+      { id:28, category:"Savon & Hygiène", vitc:false, name:"Protège Brosse à dent et pâte", description:"La solution hygiénique idéale pour transporter vos essentiels dentaires lors de vos déplacements.", details:"Étui de voyage portable compact et robuste. Disponible en 4 coloris.", price:2500, img:"images/Protège-Brosse-à-dent-et-pâte.jpg" },
 
       // ===== GEL DE DOUCHE =====
-      {
-        id:29, category:"Gel de Douche", vitc:false,
-        name:"Gel de douche",
-        description:"Une expérience revitalisante pour un nettoyage gommant qui laisse la peau incroyablement douce.",
-        details:"4 variantes : Vit C & Curcuma, Lait & Glutathion, Half Cast X7, 24K Gold & Glutathion. 1000ml.",
-        price:7000,
-        img:"images/Gel-de-douche.jpg"
-      },
+      { id:29, category:"Gel de Douche", vitc:false, name:"Gel de douche", description:"Une expérience revitalisante pour un nettoyage gommant qui laisse la peau incroyablement douce.", details:"4 variantes : Vit C & Curcuma, Lait & Glutathion, Half Cast X7, 24K Gold & Glutathion. 1000ml.", price:7000, img:"images/Gel-de-douche.jpg" },
 
-      // ===== USTENSILES DE CUISINE =====
-      {
-        id:30, category:"Ustensiles de Cuisine", vitc:false,
-        name:"Casserole de cuisine",
-        description:"Un équipement premium pour réussir toutes vos cuissons sans que les aliments n'attachent.",
-        details:"Set 8 pièces avec revêtement antiadhésif haute performance. Poignées et boutons dorés.",
-        price:25000,
-        img:"images/Casserole-de-cuisine.jpg"
-      },
-      {
-        id:31, category:"Ustensiles de Cuisine", vitc:false,
-        name:"Casserole",
-        description:"Le set de poêles indispensable pour saisir et griller vos plats à la perfection.",
-        details:"Ensemble de 3 poêles antiadhésives effet granit. Différentes tailles.",
-        price:10000,
-        img:"images/Casserole.jpg"
-      },
-      {
-        id:32, category:"Ustensiles de Cuisine", vitc:false,
-        name:"Balance de cuisine électronique",
-        description:"Ne ratez plus aucune recette grâce à cette balance digitale d'une précision absolue.",
-        details:"Modèle SF-400. Capacité maximale 10 000 g. Écran LCD clair. Fonctions ZERO/TARE/MODE.",
-        price:5000,
-        img:"images/Balance-de-cuisine-électronique.jpg"
-      },
-      {
-        id:33, category:"Ustensiles de Cuisine", vitc:false,
-        name:"Carafe",
-        description:"Sublimez le service de vos boissons rafraîchissantes avec cet ensemble design.",
-        details:"Service complet en verre ambré : carafe + 4 verres. Marque Garbo Glassware.",
-        price:8000,
-        img:"images/Carafe.jpg"
-      },
-      {
-        id:34, category:"Ustensiles de Cuisine", vitc:false,
-        name:"Verre à champagne or",
-        description:"Apportez une touche de luxe et d'élégance inoubliable à toutes vos célébrations.",
-        details:"Lot de 6 flûtes à champagne avec finition dorée raffinée. Livré en boîte cadeau.",
-        price:8500,
-        img:"images/Verre-à-champagne-or.jpg"
-      },
-      {
-        id:35, category:"Ustensiles de Cuisine", vitc:false,
-        name:"Louche en silicone",
-        description:"Équipez votre cuisine avec des ustensiles modernes qui préservent vos revêtements antiadhésifs.",
-        details:"Ensemble complet Kitchenware Set, disponible en 4 coloris (rose, gris, noir, menthe).",
-        price:8500,
-        img:"images/Louche-en-silicone.jpg"
-      },
-      {
-        id:36, category:"Ustensiles de Cuisine", vitc:false,
-        name:"Distributeur de boisson en forme de globe",
-        description:"Servez l'eau, les cocktails ou vos spiritueux avec originalité lors de vos réceptions.",
-        details:"Globe en verre et métal chromé. Capacité 1,5 à 3,5 litres. Robinet pratique intégré.",
-        price:10000,
-        img:"images/Distributeur-de-boisson-en-forme-de-globe.jpg"
-      },
+      // ===== USTENSILES =====
+      { id:30, category:"Ustensiles de Cuisine", vitc:false, name:"Casserole de cuisine", description:"Un équipement premium pour réussir toutes vos cuissons sans que les aliments n'attachent.", details:"Set 8 pièces avec revêtement antiadhésif haute performance. Poignées et boutons dorés.", price:25000, img:"images/Casserole-de-cuisine.jpg" },
+      { id:31, category:"Ustensiles de Cuisine", vitc:false, name:"Casserole", description:"Le set de poêles indispensable pour saisir et griller vos plats à la perfection.", details:"Ensemble de 3 poêles antiadhésives effet granit. Différentes tailles.", price:10000, img:"images/Casserole.jpg" },
+      { id:32, category:"Ustensiles de Cuisine", vitc:false, name:"Balance de cuisine électronique", description:"Ne ratez plus aucune recette grâce à cette balance digitale d'une précision absolue.", details:"Modèle SF-400. Capacité maximale 10 000 g. Écran LCD clair. Fonctions ZERO/TARE/MODE.", price:5000, img:"images/Balance-de-cuisine-électronique.jpg" },
+      { id:33, category:"Ustensiles de Cuisine", vitc:false, name:"Carafe", description:"Sublimez le service de vos boissons rafraîchissantes avec cet ensemble design.", details:"Service complet en verre ambré : carafe + 4 verres. Marque Garbo Glassware.", price:8000, img:"images/Carafe.jpg" },
+      { id:34, category:"Ustensiles de Cuisine", vitc:false, name:"Verre à champagne or", description:"Apportez une touche de luxe et d'élégance inoubliable à toutes vos célébrations.", details:"Lot de 6 flûtes à champagne avec finition dorée raffinée. Livré en boîte cadeau.", price:8500, img:"images/Verre-à-champagne-or.jpg" },
+      { id:35, category:"Ustensiles de Cuisine", vitc:false, name:"Louche en silicone", description:"Équipez votre cuisine avec des ustensiles modernes qui préservent vos revêtements antiadhésifs.", details:"Ensemble complet Kitchenware Set, disponible en 4 coloris (rose, gris, noir, menthe).", price:8500, img:"images/Louche-en-silicone.jpg" },
+      { id:36, category:"Ustensiles de Cuisine", vitc:false, name:"Distributeur de boisson en forme de globe", description:"Servez l'eau, les cocktails ou vos spiritueux avec originalité lors de vos réceptions.", details:"Globe en verre et métal chromé. Capacité 1,5 à 3,5 litres. Robinet pratique intégré.", price:10000, img:"images/Distributeur-de-boisson-en-forme-de-globe.jpg" },
 
-      // ===== MAISON, BIEN-ÊTRE & DIVERS =====
-      {
-        id:37, category:"Maison & High-Tech", vitc:false,
-        name:"Bande LED néon intelligente",
-        description:"Créez des ambiances lumineuses personnalisées au gré de vos envies avec la synchronisation musicale.",
-        details:"Contrôle via App smartphone (Smart Life/Tuya) ou télécommande. RGBIC multizone.",
-        price:8500,
-        img:"images/Bande-LED-néon-intelligente.jpg"
-      },
-      {
-        id:38, category:"Maison & High-Tech", vitc:false,
-        name:"Ring Light LED de 14 pouces",
-        description:"L'éclairage professionnel parfait pour sublimer vos photos et vos créations de contenus vidéos.",
-        details:"Diamètre 36 cm. Trépied 107cm inclus. Disponible en version RGB multicolore ou 2 couleurs.",
-        price:8000,
-        img:"images/Ring-Light-LED-de-14-pouces.jpg"
-      },
-      {
-        id:39, category:"Maison & High-Tech", vitc:false,
-        name:"Rouleau de papier peint 3D",
-        description:"Rénovez murs, plafonds ou meubles instantanément avec cet effet marbré ultra-réaliste.",
-        details:"Rouyi UV Marble Sheet. Motif marbre blanc/gris/or. PVC épais réutilisable. 3m x 1,2m.",
-        price:25000,
-        img:"images/Rouleau-de-papier-peint-3D.jpg"
-      },
-      {
-        id:40, category:"Maison & High-Tech", vitc:false,
-        name:"Planche fitness multifonction",
-        description:"L'équipement complet pour sculpter votre corps et améliorer votre posture à domicile.",
-        details:"Plateforme pilates pliable avec élastiques, curseurs et appuie-mains. Compact et léger.",
-        price:20000,
-        img:"images/Planche-fitness-multifonction.jpg"
-      },
-      {
-        id:41, category:"Maison & High-Tech", vitc:false,
-        name:"Gaine amincissante de type bandage",
-        description:"Sculptez votre taille efficacement et confortablement, un allié de choix après un accouchement.",
-        details:"Bande 4 mètres (5 000 FCFA) ou 5 mètres (7 000 FCFA). Soutien du dos, remodelage taille.",
-        price:5000,
-        img:"images/Gaine-amincissante-de-type-bandage.jpg"
-      },
-      {
-        id:42, category:"Maison & High-Tech", vitc:false,
-        name:"Moustiquaire pliable",
-        description:"Prenez l'air ou dormez en toute sérénité sans vous exposer aux piqûres de moustiques.",
-        details:"Forme rectangulaire, installation sans outil. 2 places (7 500 FCFA) ou 3 places (9 000 FCFA).",
-        price:7500,
-        img:"images/Moustiquaire-pliable.jpg"
-      },
-      {
-        id:43, category:"Maison & High-Tech", vitc:false,
-        name:"Gourde Thermos 500ml",
-        description:"Gardez votre café bien chaud ou votre eau bien fraîche tout au long de la journée.",
-        details:"Acier inoxydable, isolation cuivre/vide. Disponible en plusieurs couleurs.",
-        price:3500,
-        img:"images/Gourde-Thermos-500ml.jpg"
-      },
-      {
-        id:44, category:"Maison & High-Tech", vitc:false,
-        name:"Thermos 1L",
-        description:"Une grande capacité isotherme pour vous accompagner dans toutes vos aventures avec style.",
-        details:"SUS316 Acier inoxydable haute qualité. 4 coloris : bleu marine, noir, rouge, blanc.",
-        price:4000,
-        img:"images/Thermos-1L.jpg"
-      },
-      {
-        id:45, category:"Maison & High-Tech", vitc:false,
-        name:"Gourde thermos",
-        description:"L'accessoire hydratation indispensable, résistant et parfait pour le quotidien.",
-        details:"Bouteille isotherme inox, large ouverture, anse silicone. Plusieurs couleurs disponibles.",
-        price:4000,
-        img:"images/Gourde-thermos.jpg"
-      },
-      {
-        id:46, category:"Maison & High-Tech", vitc:false,
-        name:"Tondeuse rechargeable en acier",
-        description:"Une coupe nette et professionnelle à domicile grâce à cette tondeuse performante.",
-        details:"Marque Daling. Pour cheveux et barbe. 2en1, sans fil, rechargeable, LED display. Design bronze gravé.",
-        price:12000,
-        img:"images/Tondeuse-rechargeable-en-acier.jpg"
-      },
-      {
-        id:47, category:"Maison & High-Tech", vitc:false,
-        name:"Seche ongle électrique",
-        description:"Obtenez une manucure professionnelle en un clin d'œil avec ce séchoir rapide.",
-        details:"SUN X5, 36 LEDs UV/LED, 48W. Sèche tous types de vernis gel. Minuterie digitale.",
-        price:7000,
-        img:"images/Seche-ongle-électrique.jpg"
-      },
-      {
-        id:48, category:"Maison & High-Tech", vitc:false,
-        name:"New Serpillère triangulaire",
-        description:"Nettoyez les moindres recoins sans vous salir les mains grâce à son système ingénieux.",
-        details:"Rotation 360°, manche télescopique, essorage automatique. Utilisable sec et humide.",
-        price:5000,
-        img:"images/New-Serpillère-triangulaire.jpg"
-      },
-      {
-        id:49, category:"Maison & High-Tech", vitc:false,
-        name:"Kit lime pieds",
-        description:"Prenez soin de vos pieds et retrouvez une peau incroyablement douce comme en institut.",
-        details:"Appareil rechargeable USB, 2 vitesses (2200/2600 rpm), LED, 3 têtes interchangeables.",
-        price:10000,
-        img:"images/Kit-lime-pieds.jpg"
-      },
-      {
-        id:50, category:"Maison & High-Tech", vitc:false,
-        name:"Vibromasseur",
-        description:"Détendez vos muscles en profondeur ou profitez d'un moment de bien-être personnel.",
-        details:"Silicone noir, tête flexible, vibrations silencieuses, rechargeable USB. Format baguette.",
-        price:5000,
-        img:"images/Vibromasseur.jpg"
-      },
-      {
-        id:51, category:"Maison & High-Tech", vitc:false,
-        name:"Mini bâton de massage vibro",
-        description:"Un accessoire compact et discret pour soulager les tensions musculaires où que vous soyez.",
-        details:"Silicone, 100% waterproof, USB rechargeable, réglage intensité & fréquence. 202mm.",
-        price:7000,
-        img:"images/Mini-bâton-de-massage-vibro.jpg"
-      },
-      {
-        id:52, category:"Maison & High-Tech", vitc:false,
-        name:"Support pour téléphone",
-        description:"Gardez les mains libres et votre écran toujours visible sur votre bureau ou votre table.",
-        details:"Base ronde lestée, tige télescopique réglable, rotatif. Réel photo disponible.",
-        price:2000,
-        img:"images/Support-pour-téléphone.jpg"
-      },
-      {
-        id:53, category:"Maison & High-Tech", vitc:false,
-        name:"Tapis de sol en caoutchouc",
-        description:"Sécurisez votre entrée et apportez une touche de couleur à votre intérieur.",
-        details:"Forme ovale, motifs fleurs ou inscription Welcome. Multi-coloris. Antidérapant.",
-        price:3000,
-        img:"images/Tapis-de-sol-en-caoutchouc.jpg"
-      }
+      // ===== MAISON & HIGH-TECH =====
+      { id:37, category:"Maison & High-Tech", vitc:false, name:"Bande LED néon intelligente", description:"Créez des ambiances lumineuses personnalisées au gré de vos envies avec la synchronisation musicale.", details:"Contrôle via App smartphone (Smart Life/Tuya) ou télécommande. RGBIC multizone.", price:8500, img:"images/Bande-LED-néon-intelligente.jpg" },
+      { id:38, category:"Maison & High-Tech", vitc:false, name:"Ring Light LED de 14 pouces", description:"L'éclairage professionnel parfait pour sublimer vos photos et vos créations de contenus vidéos.", details:"Diamètre 36 cm. Trépied 107cm inclus. Disponible en version RGB multicolore ou 2 couleurs.", price:8000, img:"images/Ring-Light-LED-de-14-pouces.jpg" },
+      { id:39, category:"Maison & High-Tech", vitc:false, name:"Rouleau de papier peint 3D", description:"Rénovez murs, plafonds ou meubles instantanément avec cet effet marbré ultra-réaliste.", details:"Rouyi UV Marble Sheet. Motif marbre blanc/gris/or. PVC épais réutilisable. 3m x 1,2m.", price:25000, img:"images/Rouleau-de-papier-peint-3D.jpg" },
+      { id:40, category:"Maison & High-Tech", vitc:false, name:"Planche fitness multifonction", description:"L'équipement complet pour sculpter votre corps et améliorer votre posture à domicile.", details:"Plateforme pilates pliable avec élastiques, curseurs et appuie-mains. Compact et léger.", price:20000, img:"images/Planche-fitness-multifonction.jpg" },
+      { id:41, category:"Maison & High-Tech", vitc:false, name:"Gaine amincissante de type bandage", description:"Sculptez votre taille efficacement et confortablement, un allié de choix après un accouchement.", details:"Bande 4 mètres (5 000 FCFA) ou 5 mètres (7 000 FCFA). Soutien du dos, remodelage taille.", price:5000, img:"images/Gaine-amincissante-de-type-bandage.jpg" },
+      { id:42, category:"Maison & High-Tech", vitc:false, name:"Moustiquaire pliable", description:"Prenez l'air ou dormez en toute sérénité sans vous exposer aux piqûres de moustiques.", details:"Forme rectangulaire, installation sans outil. 2 places (7 500 FCFA) ou 3 places (9 000 FCFA).", price:7500, img:"images/Moustiquaire-pliable.jpg" },
+      { id:43, category:"Maison & High-Tech", vitc:false, name:"Gourde Thermos 500ml", description:"Gardez votre café bien chaud ou votre eau bien fraîche tout au long de la journée.", details:"Acier inoxydable, isolation cuivre/vide. Disponible en plusieurs couleurs.", price:3500, img:"images/Gourde-Thermos-500ml.jpg" },
+      { id:44, category:"Maison & High-Tech", vitc:false, name:"Thermos 1L", description:"Une grande capacité isotherme pour vous accompagner dans toutes vos aventures avec style.", details:"SUS316 Acier inoxydable haute qualité. 4 coloris : bleu marine, noir, rouge, blanc.", price:4000, img:"images/Thermos-1L.jpg" },
+      { id:45, category:"Maison & High-Tech", vitc:false, name:"Gourde thermos", description:"L'accessoire hydratation indispensable, résistant et parfait pour le quotidien.", details:"Bouteille isotherme inox, large ouverture, anse silicone. Plusieurs couleurs disponibles.", price:4000, img:"images/Gourde-thermos.jpg" },
+      { id:46, category:"Maison & High-Tech", vitc:false, name:"Tondeuse rechargeable en acier", description:"Une coupe nette et professionnelle à domicile grâce à cette tondeuse performante.", details:"Marque Daling. Pour cheveux et barbe. 2en1, sans fil, rechargeable, LED display. Design bronze gravé.", price:12000, img:"images/Tondeuse-rechargeable-en-acier.jpg" },
+      { id:47, category:"Maison & High-Tech", vitc:false, name:"Seche ongle électrique", description:"Obtenez une manucure professionnelle en un clin d'œil avec ce séchoir rapide.", details:"SUN X5, 36 LEDs UV/LED, 48W. Sèche tous types de vernis gel. Minuterie digitale.", price:7000, img:"images/Seche-ongle-électrique.jpg" },
+      { id:48, category:"Maison & High-Tech", vitc:false, name:"New Serpillère triangulaire", description:"Nettoyez les moindres recoins sans vous salir les mains grâce à son système ingénieux.", details:"Rotation 360°, manche télescopique, essorage automatique. Utilisable sec et humide.", price:5000, img:"images/New-Serpillère-triangulaire.jpg" },
+      { id:49, category:"Maison & High-Tech", vitc:false, name:"Kit lime pieds", description:"Prenez soin de vos pieds et retrouvez une peau incroyablement douce comme en institut.", details:"Appareil rechargeable USB, 2 vitesses (2200/2600 rpm), LED, 3 têtes interchangeables.", price:10000, img:"images/Kit-lime-pieds.jpg" },
+      { id:50, category:"Maison & High-Tech", vitc:false, name:"Vibromasseur", description:"Détendez vos muscles en profondeur ou profitez d'un moment de bien-être personnel.", details:"Silicone noir, tête flexible, vibrations silencieuses, rechargeable USB. Format baguette.", price:5000, img:"images/Vibromasseur.jpg" },
+      { id:51, category:"Maison & High-Tech", vitc:false, name:"Mini bâton de massage vibro", description:"Un accessoire compact et discret pour soulager les tensions musculaires où que vous soyez.", details:"Silicone, 100% waterproof, USB rechargeable, réglage intensité & fréquence. 202mm.", price:7000, img:"images/Mini-bâton-de-massage-vibro.jpg" },
+      { id:52, category:"Maison & High-Tech", vitc:false, name:"Support pour téléphone", description:"Gardez les mains libres et votre écran toujours visible sur votre bureau ou votre table.", details:"Base ronde lestée, tige télescopique réglable, rotatif. Réel photo disponible.", price:2000, img:"images/Support-pour-téléphone.jpg" },
+      { id:53, category:"Maison & High-Tech", vitc:false, name:"Tapis de sol en caoutchouc", description:"Sécurisez votre entrée et apportez une touche de couleur à votre intérieur.", details:"Forme ovale, motifs fleurs ou inscription Welcome. Multi-coloris. Antidérapant.", price:3000, img:"images/Tapis-de-sol-en-caoutchouc.jpg" }
     ];
 
     let cart = [];
     let currentFilter = 'all';
 
-    function openWhatsApp(productName) {
-      const msg = encodeURIComponent(`Bonjour ! Je suis intéressé(e) par : *${productName}*. Pouvez-vous me donner plus d'informations ?`);
-      window.open(`https://wa.me/message/U3AUHWUIXGFQC1?text=${msg}`, '_blank');
-    }
-
+    // ─── Helpers ───────────────────────────────────────────────────────
     function formatPrice(price) {
       return price.toLocaleString('fr-FR') + ' FCFA';
     }
 
+    function openWhatsApp(name, price) {
+      const msg = encodeURIComponent(
+        `Bonjour, je souhaite commander le produit *${name}* au prix de *${formatPrice(price)}*.`
+      );
+      window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
+    }
+
+    // ─── Render products ───────────────────────────────────────────────
     function renderProducts() {
       const grid = document.getElementById('products-grid');
       const filtered = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
@@ -665,7 +299,7 @@
                       style="background:var(--dark)">
                 <i class="fa-solid fa-cart-plus mr-1"></i>Panier
               </button>
-              <button onclick="openWhatsApp('${p.name.replace(/'/g,"\\'")}'); event.stopPropagation()"
+              <button onclick="openWhatsApp('${p.name.replace(/'/g,"\\'")}', ${p.price}); event.stopPropagation()"
                       class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 transition-colors">
                 <i class="fa-brands fa-whatsapp text-sm"></i>Commander
               </button>
@@ -675,6 +309,7 @@
       }).join('');
     }
 
+    // ─── Product modal ─────────────────────────────────────────────────
     function showProductModal(id) {
       const p = products.find(x => x.id === id);
       const isVitC = p.vitc;
@@ -702,7 +337,7 @@
                   style="background:var(--dark)">
             <i class="fa-solid fa-cart-plus"></i> Ajouter au panier
           </button>
-          <button onclick="openWhatsApp('${p.name.replace(/'/g,"\\'")}'); closeModal()"
+          <button onclick="openWhatsApp('${p.name.replace(/'/g,"\\'")}', ${p.price}); closeModal()"
                   class="flex-1 bg-green-500 hover:bg-green-600 text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 transition-colors shadow-lg">
             <i class="fa-brands fa-whatsapp text-xl"></i> Commander
           </button>
@@ -716,6 +351,7 @@
       document.body.style.overflow = '';
     }
 
+    // ─── Category filters ──────────────────────────────────────────────
     const categoryIcons = {
       'all':'fa-grid-2','Parfum':'fa-bottle-droplet','Chaussures':'fa-shoe-prints',
       'Armoire & Étagère':'fa-box-open','Soins Visage & Corps':'fa-star',
@@ -743,6 +379,7 @@
       document.getElementById('boutique').scrollIntoView({ behavior: 'smooth' });
     }
 
+    // ─── Cart ──────────────────────────────────────────────────────────
     function addToCart(id) {
       const product = products.find(p => p.id === id);
       const existing = cart.find(item => item.id === id);
@@ -809,8 +446,10 @@
       if (!cart.length) return;
       const lines = cart.map(i => `• ${i.name} × ${i.quantity} = ${formatPrice(i.price * i.quantity)}`).join('\n');
       const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-      const msg = encodeURIComponent(`Bonjour ! Je souhaite commander :\n\n${lines}\n\n*Total : ${formatPrice(total)}*\n\nMerci de confirmer ma commande 🙏`);
-      window.open(`https://wa.me/message/U3AUHWUIXGFQC1?text=${msg}`, '_blank');
+      const msg = encodeURIComponent(
+        `Bonjour ! Je souhaite commander :\n\n${lines}\n\n*Total : ${formatPrice(total)}*\n\nMerci de confirmer ma commande 🙏`
+      );
+      window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
       cart = []; updateCartCount(); toggleCart();
     }
 
